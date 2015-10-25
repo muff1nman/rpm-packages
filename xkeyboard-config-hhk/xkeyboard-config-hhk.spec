@@ -5,20 +5,14 @@
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config-hhk
 Version: 2.9
-Release: 4%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+Release: 4
 License: MIT
 Group: User Interface/X
 URL: http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 Conflicts: xkeyboard-config
 Provides: xkeyboard-config
 Patch0: hhk.patch
-%if 0%{?gitdate}
-Source0:    %{origname}-%{gitdate}.tar.bz2
-Source1:    make-git-snapshot.sh
-Source2:    commitid
-%else
 Source0: http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/%{origname}-%{version}.tar.bz2
-%endif
 
 BuildArch: noarch
 
@@ -49,29 +43,9 @@ Requires: pkgconfig
 %{name} development package
 
 %prep
-%setup -q -n %{origname}-%{?gitdate:%{gitdate}}%{!?gitdate:%{version}}
-
-%if 0%{?gitdate}
-git checkout -b fedora
-sed -i 's/git/&+ssh/' .git/config
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "x@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
-fi
-git commit -am "%{name} %{version}"
-%else
-git init
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "x@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
-fi
-git add .
-git commit -a -q -m "%{name} %{version} baseline."
-%endif
+%setup -q -n %{origname}-%{!?gitdate:%{version}}
 
 %patch0 -p1
-
-# git am -p1 %{patches} < /dev/null
 
 %build
 AUTOPOINT="intltoolize --automake --copy" autoreconf -v --force --install || exit 1
