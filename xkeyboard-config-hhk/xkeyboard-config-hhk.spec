@@ -5,7 +5,7 @@
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config-hhk
 Version: 2.9
-Release: 5
+Release: 6
 License: MIT
 Group: User Interface/X
 URL: http://www.freedesktop.org/wiki/Software/XKeyboardConfig
