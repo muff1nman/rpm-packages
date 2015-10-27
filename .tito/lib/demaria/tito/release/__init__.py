@@ -1,4 +1,5 @@
 # flake8: noqa
 
 from demaria.tito.release.main import \
-    S3Releaser
+    S3Releaser, \
+    YumS3RepoReleaser

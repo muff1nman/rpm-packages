@@ -230,7 +230,7 @@ class S3Releaser(Releaser):
     filetypes = ['rpm', 'srpm', 'tgz']
 
     # By default run s3cmd with these paramaters
-    s3cmd_args = ""
+    s3cmd_args = "-r"
 
     def __init__(self, name=None, tag=None, build_dir=None,
             config=None, user_config=None,
@@ -452,7 +452,7 @@ class RsyncReleaser(Releaser):
         pass
 
 
-class YumRepoReleaser(RsyncReleaser):
+class YumS3RepoReleaser(S3Releaser):
     """
     A releaser which will rsync down a yum repo, build the desired packages,
     plug them in, update the repodata, and push the yum repo back out.
@@ -474,7 +474,7 @@ class YumRepoReleaser(RsyncReleaser):
             config=None, user_config=None,
             target=None, releaser_config=None, no_cleanup=False,
             test=False, auto_accept=False, **kwargs):
-        RsyncReleaser.__init__(self, name, tag, build_dir, config,
+        S3Releaser.__init__(self, name, tag, build_dir, config,
                 user_config, target, releaser_config, no_cleanup, test, auto_accept,
                 prefix="yumrepo-", **kwargs)
 
