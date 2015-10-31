@@ -17,7 +17,7 @@ Dynamic menu is a generic menu for X, originally designed for dwm. It manages
 huge amounts (up to 10.000 and more) of user defined menu items efficiently.
 
 %prep
-%autosetup
+%autosetup -n %{name}-r%{version}
 
 %build
 make %{?_smp_mflags}
