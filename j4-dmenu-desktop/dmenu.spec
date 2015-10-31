@@ -7,7 +7,8 @@ URL:            https://github.com/enkore/j4-dmenu-desktop
 Source0:        https://github.com/enkore/%{name}/archive/r%{version}.tar.gz
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
-Requires:       terminus-fonts
+BuildRequires:  cmake
+Requires:       terminus-fonts dmenu
 # dmenu-4.5 switched to a more generic tool, stest (f17 note)
 Obsoletes:      lsx < 0.1-2
 Provides:       lsx = 0.1-2
@@ -20,6 +21,7 @@ huge amounts (up to 10.000 and more) of user defined menu items efficiently.
 %autosetup -n %{name}-r%{version}
 
 %build
+%cmake .
 make %{?_smp_mflags}
 
 %install
