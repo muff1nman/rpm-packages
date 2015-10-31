@@ -1,6 +1,6 @@
 Name:           j4-dmenu-desktop
 Version:        2.13
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Generic menu for X
 License:        GPL
 URL:            https://github.com/enkore/j4-dmenu-desktop
