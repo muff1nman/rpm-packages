@@ -9,6 +9,8 @@ URL:            https://github.com/muff1nman/dmenu2
 Source0:	https://github.com/muff1nman/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
+BuildRequires:  libXft-devel
+Requires:       libXft
 Requires:       terminus-fonts
 
 %description
