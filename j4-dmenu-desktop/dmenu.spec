@@ -29,6 +29,6 @@ make %{?_smp_mflags}
 
 %files
 %doc LICENSE README.md
-/usr/bin/j4-dmenu-desktop
+%{_bindir}/%{name}
 
 %changelog
