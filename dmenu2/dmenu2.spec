@@ -2,7 +2,7 @@ Name:           dmenu2
 Conflicts:      dmenu
 Provides:       dmenu
 Version:        0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Generic menu for X
 License:        MIT
 URL:            https://github.com/muff1nman/dmenu2
