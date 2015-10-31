@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        Generic menu for X
 License:        GPL
 URL:            https://github.com/enkore/j4-dmenu-desktop
-Source0:        https://github.com/enkore/${name}/archive/r${version}.tar.gz
+Source0:        https://github.com/enkore/%{name}/archive/r%{version}.tar.gz
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
 Requires:       terminus-fonts
