@@ -7,6 +7,7 @@ URL:            https://github.com/enkore/j4-dmenu-desktop
 Source0:        https://github.com/enkore/%{name}/archive/r%{version}.tar.gz
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
+BuildRequires:  git
 BuildRequires:  cmake
 Requires:       terminus-fonts dmenu
 # dmenu-4.5 switched to a more generic tool, stest (f17 note)
