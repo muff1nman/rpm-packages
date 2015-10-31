@@ -36,9 +36,9 @@ make %{?_smp_mflags}
 
 %files
 %doc LICENSE README
-%{_bindir}/%{name}*
+%{_bindir}/dmenu*
 %{_bindir}/stest
-%{_mandir}/man*/%{name}.*
+%{_mandir}/man*/dmenu.*
 %{_mandir}/man*/stest.*
 
 %changelog
