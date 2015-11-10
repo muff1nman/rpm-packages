@@ -16,7 +16,7 @@ BuildRequires:  qt-devel, boost-devel
 BuildRequires:    alsa-lib-devel
 BuildRequires:    pulseaudio-libs-devel, speex-devel
 BuildRequires:    speech-dispatcher-devel, libogg-devel
-BuildRequires:    libcap-devel
+BuildRequires:    libcap-devel, speexdsp-devel
 BuildRequires:    desktop-file-utils, openssl-devel
 BuildRequires:    libXevie-devel, celt071-devel
 BuildRequires:    protobuf-compiler, avahi-compat-libdns_sd-devel
