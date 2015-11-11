@@ -1,7 +1,7 @@
 Name:           speexdsp
 Version:        1.2
 %global rc_ver  rc3
-Release:        0.7.%{rc_ver}%{?dist}
+Release:        0.8.%{rc_ver}%{?dist}
 Summary:        A voice compression format (DSP)
 
 Group:          System Environment/Libraries
