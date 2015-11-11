@@ -67,7 +67,8 @@ find %{buildroot} -type f -name "*.la" -delete
 
 
 %files
-%doc AUTHORS COPYING TODO ChangeLog README NEWS doc/manual.pdf
+%doc AUTHORS COPYING TODO ChangeLog README NEWS
+%doc /usr/share/doc/speexdsp/manual.pdf
 %{_libdir}/libspeexdsp.so.*
 
 %files devel
