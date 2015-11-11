@@ -251,6 +251,11 @@ class S3Releaser(Releaser):
     def release(self, dry_run=False, no_build=False, scratch=False):
         self.dry_run = dry_run
 
+        # overwrite default self.filetypes if filetypes option is specified in config
+        if self.releaser_config.has_option(self.target, 'filetypes'):
+            print("Overriding filetypes with %s" %(self.releaser_config.get(self.target, 'filetypes')))
+            self.filetypes = self.releaser_config.get(self.target, 'filetypes').split(" ")
+
         # Should this run?
         self.builder.no_cleanup = self.no_cleanup
         self.builder.tgz()
@@ -261,7 +266,8 @@ class S3Releaser(Releaser):
             srpm_disttag = self.releaser_config.get(self.target, "srpm_disttag")
         self.builder.srpm(dist=srpm_disttag)
 
-        self.builder.rpm()
+        if 'rpm' in self.filetypes:
+            self.builder.rpm()
         self.builder.cleanup()
 
         if self.releaser_config.has_option(self.target, 's3cmd_args'):
@@ -303,10 +309,7 @@ class S3Releaser(Releaser):
     def _copy_files_to_temp_dir(self, temp_dir):
         os.chdir(temp_dir)
 
-        # overwrite default self.filetypes if filetypes option is specified in config
-        if self.releaser_config.has_option(self.target, 'filetypes'):
-            self.filetypes = self.releaser_config.get(self.target, 'filetypes').split(" ")
-
+        print(self.filetypes)
         for artifact in self.builder.artifacts:
             if artifact.endswith('.tar.gz'):
                 artifact_type = 'tgz'
@@ -317,6 +320,7 @@ class S3Releaser(Releaser):
             else:
                 continue
 
+            print("artifact type (%s) for file (%s)" %(artifact_type,artifact))
             if artifact_type in self.filetypes:
                 print("copy: %s > %s" % (artifact, temp_dir))
                 shutil.copy(artifact, temp_dir)
