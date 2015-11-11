@@ -1,7 +1,6 @@
 #!/usr/bin/env python2
 
 import ConfigParser
-import sys
 import subprocess
 import os
 
@@ -18,10 +17,14 @@ def cd(path):
 	finally:
 		os.chdir(prevdir)
 
+branch_name = subprocess.check_output("git rev-parse --abbrev-ref HEAD", shell=True).rstrip()
+release_target = "s3cmd-%s-src" %(branch_name)
+print("Release target: %s" %(release_target))
+
 # get bucket we are going to clear
 tito_config = ConfigParser.RawConfigParser()
 tito_config.read('.tito/releasers.conf')
-s3bucket = tito_config.get(sys.argv[1],'s3cmd')
+s3bucket = tito_config.get(release_target,'s3cmd')
 
 # Clear folder if it exists
 check_cmd = "s3cmd info %s" %(s3bucket)
@@ -45,12 +48,12 @@ paths = glob('*/')
 for path in paths:
 	print("Building specs in %s" %(path))
 	with cd(path):
-		tito_cmd = "tito release %s" %(sys.argv[1])
+		tito_cmd = "tito release %s" %(release_target)
 		subprocess.check_call(tito_cmd, shell=True)
 
 # TODO use configured filetypes
 list_srpms = "s3cmd ls %s | awk '{print $4}' | sed 's/^s3/http/' | grep '\.src\.rpm$'" %(s3bucket)
 print(list_srpms)
-subprocess.check_call(list_srpms)
+subprocess.check_call(list_srpms, shell=True)
 
 # TODO send build to copr
