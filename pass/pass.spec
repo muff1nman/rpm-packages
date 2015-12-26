@@ -30,6 +30,7 @@ make DESTDIR=%{buildroot} PREFIX=%{_prefix} \
      BINDIR=%{_bindir} SYSCONFDIR=%{_sysconfdir} \
      MANDIR=%{_mandir} FORCE_ALL=1 \
      install
+install -m 755 contrib/dmenu/passmenu %{buildroot}/usr/bin
 
 %check
 make test
@@ -37,6 +38,7 @@ make test
 %files
 %doc README COPYING contrib
 %{_bindir}/pass
+%{_bindir}/passmenu
 %{_datadir}/bash-completion/completions/pass
 %{_datadir}/fish/vendor_completions.d/pass.fish
 %{_datadir}/zsh/site-functions/_pass
