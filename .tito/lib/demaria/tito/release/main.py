@@ -285,7 +285,7 @@ class S3Releaser(Releaser):
 
     def _s3cmd_from_remote(self, s3cmd_args, s3cmd_location, temp_dir):
         os.chdir(temp_dir)
-        cmd = "s3cmd sync %s %s %s" % (s3cmd_args, s3cmd_location, temp_dir)
+        cmd = "s3cmd sync %s %s %s/" % (s3cmd_args, s3cmd_location, temp_dir)
         print(cmd)
         output = run_command(cmd)
         debug(output)
