@@ -1,0 +1,12 @@
+diff -upNr bless-0.6.0.orign/src/gui/dialogs/AboutDialog.cs bless-0.6.0/src/gui/dialogs/AboutDialog.cs
+--- bless-0.6.0.orign/src/gui/dialogs/AboutDialog.cs	2008-06-07 14:18:13.000000000 +0200
++++ bless-0.6.0/src/gui/dialogs/AboutDialog.cs	2008-08-22 17:51:05.000000000 +0200
+@@ -34,7 +34,7 @@ public class AboutDialog: Gtk.AboutDialo
+ 		Artists = new string[] {"Michael Iatrou"};
+ 		Authors = new string[] {"Alexandros Frantzis"};
+ 		Copyright =  Catalog.GetString("Copyright 2004 - 2008 Alexandros Frantzis");
+-		ProgramName = "Bless";
++		Name = "Bless";
+ 		Version = ConfigureDefines.VERSION;
+ 		Comments = Catalog.GetString("Bless is a Hex Editor for Gtk#");
+ 		Website = "http://home.gna.org/bless";
