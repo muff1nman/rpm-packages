@@ -3,7 +3,7 @@
 
 Name:           steam
 Version:        1.0.0.49
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Installer for the Steam software distribution service
 # Redistribution and repackaging for Linux is allowed, see license file
 License:        Steam License Agreement
@@ -83,6 +83,9 @@ fi
 %{_udevrulesdir}/99-steam-controller-perms.rules
 
 %changelog
+* Tue Dec 29 2015 Andrew DeMaria <lostonamountain@gmail.com> 1.0.0.49-2
+- Changed libtxc_dxtn to be 64 bit for dota 2 to work
+
 * Fri Aug 29 2014 Nux <rpm@li.nux.ro> - 1.0.0.49-1
 - update to 1.0.0.49
 
