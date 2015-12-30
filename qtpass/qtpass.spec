@@ -47,7 +47,7 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications qtpass.desktop
 %doc
 %{_bindir}/*
 %{_datadir}/applications/qtpass.desktop
-%{_datadir}/icons/hicolor/64x64/apps/qtpass.png
+%{_datadir}/icons/hicolor/64x64/apps/qtpass-icon.png
 
 %post
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
