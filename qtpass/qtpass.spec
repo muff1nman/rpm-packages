@@ -39,7 +39,7 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-install -Dm 0644 artwork/icon.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/qtpass.png
+install -Dm 0644 artwork/icon.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/qtpass-icon.png
 #xdg-icon-resource install --size 64 artwork/icon.png qtpass-icon
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications qtpass.desktop
 
