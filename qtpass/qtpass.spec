@@ -14,8 +14,10 @@ License: GPLv3
 URL:	https://qtpass.org/	
 Source0: %{name}-%{version}.tar.gz
 
-BuildRequires:	qt5-qtbase-devel
-BuildRequires:  qt5-qttools-devel
+BuildRequires: qt5-qtbase-devel
+BuildRequires: qt5-qttools-devel
+BuildRequires: desktop-file-utils
+BuildRequires: xdg-utils
 Requires: pass	
 Requires: qt5-qtbase	
 
@@ -37,6 +39,8 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+xdg-icon-resource install --size 64 artwork/icon.png qtpass-icon
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications qtpass.desktop
 
 %files
 %doc
