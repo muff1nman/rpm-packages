@@ -8,7 +8,7 @@
 
 Name: qtpass		
 Version: 1.0.5.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: QtPass is a multi-platform GUI for pass, the standard unix password manager.	
 License: GPLv3
 URL:	https://qtpass.org/	
@@ -61,6 +61,10 @@ fi
 /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %changelog
+* Wed Dec 30 2015 Andrew DeMaria <lostonamountain@gmail.com> 1.0.5.1-2
+- Added desktop/icon resources
+- Added required build deps for a clean build
+
 * Tue Dec 01 2015 serstring=Bram Vandoren <bram.vandoren@ster.kuleuven.be> - 1.0.5-1
 - Initial RPM spec
 
