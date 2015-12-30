@@ -15,7 +15,7 @@ URL:	https://qtpass.org/
 Source0: %{name}-%{version}.tar.gz
 
 BuildRequires: qt5-qtbase-devel
-BuildRequires: qt5-qttools-devel
+#BuildRequires: qt5-qttools-devel
 BuildRequires: desktop-file-utils
 BuildRequires: xdg-utils
 Requires: pass	
@@ -40,7 +40,6 @@ make %{?_smp_mflags}
 %install
 %make_install
 install -Dm 0644 artwork/icon.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/qtpass-icon.png
-#xdg-icon-resource install --size 64 artwork/icon.png qtpass-icon
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications qtpass.desktop
 
 %files
