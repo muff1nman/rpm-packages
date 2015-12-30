@@ -15,6 +15,7 @@ URL:	https://qtpass.org/
 Source0: %{name}-%{version}.tar.gz
 
 BuildRequires:	qt5-qtbase-devel
+BuildRequires:  qt5-qttools-devel
 Requires: pass	
 Requires: qt5-qtbase	
 
