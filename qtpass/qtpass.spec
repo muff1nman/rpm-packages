@@ -39,12 +39,27 @@ make %{?_smp_mflags}
 
 %install
 %make_install
-xdg-icon-resource install --size 64 artwork/icon.png qtpass-icon
+install -Dm 0644 artwork/icon.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/qtpass.png
+#xdg-icon-resource install --size 64 artwork/icon.png qtpass-icon
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications qtpass.desktop
 
 %files
 %doc
 %{_bindir}/*
+%{_datadir}/applications/qtpass.desktop
+%{_datadir}/icons/hicolor/64x64/apps/qtpass.png
+
+%post
+/bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
+
+%postun
+if [ $1 -eq 0 ] ; then
+    /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+fi
+
+%posttrans
+/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %changelog
 * Tue Dec 01 2015 serstring=Bram Vandoren <bram.vandoren@ster.kuleuven.be> - 1.0.5-1
