@@ -19,7 +19,7 @@ BuildRequires:  systemd
 Requires:       tar
 Requires:       zenity
 # Required for S3 compressed textures on free drivers
-Requires:       libtxc_dxtn
+Requires:       libtxc_dxtn(x86-64)
 # Required for running the package on 32 bit systems with free drivers
 Requires:       mesa-dri-drivers%{_isa}
 # Minimum requirements for starting the steam client for the first time
