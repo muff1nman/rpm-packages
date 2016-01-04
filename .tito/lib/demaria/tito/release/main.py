@@ -497,12 +497,10 @@ class YumS3RepoReleaser(S3Releaser):
         self._refresh_yum_repodata(temp_dir)
 
     def _sign_packages(self, temp_dir):
-        for artifact in self.builder.artifacts:
-            if artifact.endswith(".rpm") or artifact.endswith(".src.rpm"):
-                sign_command = "rpmsign --addsign %s" % artifact
-                debug(sign_command)
-                output = run_command(sign_command)
-                debug(output)
+        sign_command = "rpmsign --addsign *.rpm"
+        debug(sign_command)
+        output = run_command(sign_command)
+        debug(output)
 
     def _refresh_yum_repodata(self, temp_dir):
         print("Refreshing yum repodata...")
