@@ -493,6 +493,16 @@ class YumS3RepoReleaser(S3Releaser):
 
     def process_packages(self, temp_dir):
         self.prune_other_versions(temp_dir)
+        self._sign_packages(temp_dir)
+        self._refresh_yum_repodata(temp_dir)
+
+    def _sign_packages(self, temp_dir):
+        sign_command = "rpmsign --addsign *.rpm"
+        debug(sign_command)
+        output = run_command(sign_command)
+        debug(output)
+
+    def _refresh_yum_repodata(self, temp_dir):
         print("Refreshing yum repodata...")
         if self.releaser_config.has_option(self.target, 'createrepo_command'):
             self.createrepo_command = self.releaser_config.get(self.target, 'createrepo_command')
