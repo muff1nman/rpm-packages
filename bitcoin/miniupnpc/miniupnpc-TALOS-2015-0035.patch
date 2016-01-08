@@ -1,0 +1,12 @@
+diff -up igd_desc_parse.c.orig igd_desc_parse.c
+--- igd_desc_parse.c.orig	2015-10-31 18:23:28.329248631 -0200
++++ igd_desc_parse.c	2015-10-31 18:24:51.784251827 -0200
+@@ -15,6 +15,8 @@
+ void IGDstartelt(void * d, const char * name, int l)
+ {
+ 	struct IGDdatas * datas = (struct IGDdatas *)d;
++	if(l >= MINIUPNPC_URL_MAXSIZE)
++		l = MINIUPNPC_URL_MAXSIZE-1;
+ 	memcpy( datas->cureltname, name, l);
+ 	datas->cureltname[l] = '\0';
+ 	datas->level++;

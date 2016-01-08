@@ -10,7 +10,7 @@
 Summary:	Library and tool to control NAT in UPnP-enabled routers
 Name:		miniupnpc
 Version:	1.9
-Release:	1%{?dist}
+Release:	7%{?dist}
 License:	BSD
 Group:		System Environment/Libraries
 URL:		http://miniupnp.free.fr/
@@ -24,6 +24,8 @@ Patch0:		%{name}-files.patch
 Patch1:		%{name}-version.patch
 # Link to and find libminiupnpc
 Patch2:		%{name}-tests.patch
+# http://talosintel.com/reports/TALOS-2015-0035/
+Patch3:		%{name}-TALOS-2015-0035.patch
 Source1:	USAGE
 
 %description
@@ -68,6 +70,7 @@ This package contains python3 interfaces to %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3
 cp %{SOURCE1} .
 
 sed -i "s|\(\tpython setup.py install\)$|\1 --root=\$(DESTDIR)/|" Makefile
@@ -137,6 +140,24 @@ make CFLAGS="%{optflags} -DMINIUPNPC_SET_SOCKET_TIMEOUT" check
 %endif
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.9-7
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
+* Sat Oct 31 2015 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.9-6
+- Correct buffer overflow in XML parsing (#1270842, #1270182)
+
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.9-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
+* Sun Aug 17 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.9-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
+
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.9-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
+* Wed May 28 2014 Kalev Lember <kalevlember@gmail.com> - 1.9-2
+- Rebuilt for https://fedoraproject.org/wiki/Changes/Python_3.4
+
 * Wed Apr 16 2014 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 1.9-1
 - Update to latest upstream release (#1062206)
 - Correct possible DoS crash vector (patch already in tarball) (#1085618)
