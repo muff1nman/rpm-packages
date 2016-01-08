@@ -1,0 +1,12 @@
+diff -up tree-1.6.0/color.c.dircolors-ec tree-1.6.0/color.c
+--- tree-1.6.0/color.c.dircolors-ec	2013-07-09 13:29:19.431819355 +0100
++++ tree-1.6.0/color.c	2013-07-09 13:29:48.820987889 +0100
+@@ -190,7 +190,7 @@ void parse_dir_colors()
+   if (!norm_flgs) norm_flgs = scopy("00");
+   
+   if (!endcode) {
+-    sprintf(buf,"%s%s%s",leftcode,norm_flgs,rightcode);
++    sprintf(buf,"%s0%s",leftcode,rightcode);
+     endcode = scopy(buf);
+   }
+   
