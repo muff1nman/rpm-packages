@@ -1,0 +1,18 @@
+diff -up bitcoinxt-0.11C/configure.ac.orig bitcoinxt-0.11C/configure.ac
+--- bitcoinxt-0.11C/configure.ac.orig	2015-10-09 16:21:17.000000000 +0000
++++ bitcoinxt-0.11C/configure.ac	2015-11-06 00:16:20.534439122 +0000
+@@ -697,14 +697,6 @@ AC_CHECK_LIB([crypto],[RAND_egd],[],[
+   )
+ ])
+ 
+-CFLAGS_TEMP="$CFLAGS"
+-LIBS_TEMP="$LIBS"
+-CFLAGS="$CFLAGS $SSL_CFLAGS $CRYPTO_CFLAGS"
+-LIBS="$LIBS $SSL_LIBS $CRYPTO_LIBS"
+-AC_CHECK_HEADER([openssl/ec.h],, AC_MSG_ERROR(OpenSSL ec header missing),)
+-CFLAGS="$CFLAGS_TEMP"
+-LIBS="$LIBS_TEMP"
+-
+ BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
+ 
+ AC_MSG_CHECKING([whether to build bitcoind])

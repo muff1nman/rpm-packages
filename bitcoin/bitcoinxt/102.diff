@@ -1,0 +1,36 @@
+diff --git a/qa/rpc-tests/bip65-cltv.py b/qa/rpc-tests/bip65-cltv.py
+index 15c7c0e..82617ad 100755
+--- a/qa/rpc-tests/bip65-cltv.py
++++ b/qa/rpc-tests/bip65-cltv.py
+@@ -14,6 +14,13 @@
+ 
+ class BIP65Test(BitcoinTestFramework):
+ 
++    def __init__(self):
++        self.num_nodes = 3
++
++    def setup_chain(self):
++        print "Initializing test directory "+self.options.tmpdir
++        initialize_chain_clean(self.options.tmpdir, self.num_nodes)
++
+     def setup_network(self):
+         self.nodes = []
+         self.nodes.append(start_node(0, self.options.tmpdir, []))
+diff --git a/qa/rpc-tests/forknotify.py b/qa/rpc-tests/forknotify.py
+index c295838..d4d3136 100755
+--- a/qa/rpc-tests/forknotify.py
++++ b/qa/rpc-tests/forknotify.py
+@@ -16,6 +16,13 @@ class ForkNotifyTest(BitcoinTestFramework):
+ 
+     alert_filename = None  # Set by setup_network
+ 
++    def __init__(self):
++        self.num_nodes = 3
++
++    def setup_chain(self):
++        print "Initializing test directory "+self.options.tmpdir
++        initialize_chain_clean(self.options.tmpdir, self.num_nodes)
++
+     def setup_network(self):
+         self.nodes = []
+         self.alert_filename = os.path.join(self.options.tmpdir, "alert.txt")

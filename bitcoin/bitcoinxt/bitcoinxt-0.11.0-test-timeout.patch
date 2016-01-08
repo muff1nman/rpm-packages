@@ -1,0 +1,12 @@
+diff -u bitcoinxt-0.11A/qa/rpc-tests/test_framework/authproxy.py.orig bitcoinxt-0.11A/qa/rpc-tests/test_framework/authproxy.py
+--- bitcoinxt-0.11A/qa/rpc-tests/test_framework/authproxy.py.orig   2015-08-06 12:57:14.000000000 +0000
++++ bitcoinxt-0.11A/qa/rpc-tests/test_framework/authproxy.py        2015-08-23 18:50:51.546272340 +0000
+@@ -49,7 +49,7 @@
+
+ USER_AGENT = "AuthServiceProxy/0.1"
+
+-HTTP_TIMEOUT = 30
++HTTP_TIMEOUT = 300
+
+ log = logging.getLogger("BitcoinRPC")
+

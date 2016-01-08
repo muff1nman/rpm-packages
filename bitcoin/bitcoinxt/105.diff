@@ -1,0 +1,13 @@
+diff --git a/qa/rpc-tests/pruning.py b/qa/rpc-tests/pruning.py
+index 2824c51..8a22dfd 100755
+--- a/qa/rpc-tests/pruning.py
++++ b/qa/rpc-tests/pruning.py
+@@ -90,7 +90,7 @@ def test_height_min(self):
+         waitstart = time.time()
+         while os.path.isfile(self.prunedir+"blk00000.dat"):
+             time.sleep(0.1)
+-            if time.time() - waitstart > 10:
++            if time.time() - waitstart > 60:
+                 raise AssertionError("blk00000.dat not pruned when it should be")
+ 
+         print "Success"

@@ -1,0 +1,18 @@
+diff -up bitcoinxt-0.11C/configure.ac.orig bitcoinxt-0.11C/configure.ac
+--- bitcoinxt-0.11C/configure.ac.orig	2015-11-06 00:16:20.534439122 +0000
++++ bitcoinxt-0.11C/configure.ac	2015-11-06 00:18:31.131190028 +0000
+@@ -689,14 +689,6 @@ else
+   AC_CHECK_LIB([curl], [main],CURL_LIBS=-lcurl, AC_MSG_ERROR(libcurl missing))
+ fi
+ 
+-AC_CHECK_LIB([crypto],[RAND_egd],[],[
+-  AC_ARG_WITH([libressl],
+-    [AS_HELP_STRING([--with-libressl],[Build with system LibreSSL (default is no; DANGEROUS; NOT SUPPORTED)])],
+-    [AC_MSG_WARN([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])],
+-    [AC_MSG_ERROR([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])]
+-  )
+-])
+-
+ BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
+ 
+ AC_MSG_CHECKING([whether to build bitcoind])
