@@ -503,7 +503,11 @@ class YumS3RepoReleaser(S3Releaser):
         self._refresh_yum_repodata(temp_dir)
 
     def _sign_packages(self, temp_dir):
-        sign_command = "rpmsign --addsign *.rpm"
+        sign_command = "rpmsign \
+                        --define '_signature gpg' \
+                        --define '__gpg_check_password_cmd /bin/true' \
+                        --define '__gpg_sign_cmd %{__gpg} gpg --batch --no-verbose --no-armor --use-agent --no-secmem-warning -u \"%{_gpg_name}\" -sbo %{__signature_filename} %{__plaintext_filename}' \
+        --addsign *.rpm"
         debug(sign_command)
         output = run_command(sign_command)
         debug(output)
