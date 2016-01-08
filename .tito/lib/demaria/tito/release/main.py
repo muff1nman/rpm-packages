@@ -481,6 +481,9 @@ class YumS3RepoReleaser(S3Releaser):
         S3Releaser.__init__(self, name, tag, build_dir, config,
                 user_config, target, releaser_config, no_cleanup, test, auto_accept,
                 prefix="yumrepo-", **kwargs)
+        self.sign = True
+        if 'nosign' in self.builder_args:
+            self.sign = False
 
     def _read_rpm_header(self, ts, new_rpm_path):
         """
@@ -493,7 +496,10 @@ class YumS3RepoReleaser(S3Releaser):
 
     def process_packages(self, temp_dir):
         self.prune_other_versions(temp_dir)
-        self._sign_packages(temp_dir)
+        if self.sign:
+            self._sign_packages(temp_dir)
+        else:
+            print("Skipping sign step")
         self._refresh_yum_repodata(temp_dir)
 
     def _sign_packages(self, temp_dir):
