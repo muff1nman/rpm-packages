@@ -1,0 +1,30 @@
+diff --git a/rpmsign.c b/rpmsign.c
+index b8e5598..a484563 100644
+--- a/rpmsign.c
++++ b/rpmsign.c
+@@ -119,22 +119,13 @@ static int doSign(poptContext optCon)
+ 	goto exit;
+     }
+ 
+-    /* XXX FIXME: eliminate obsolete getpass() usage */
+-    passPhrase = getpass(_("Enter pass phrase: "));
+-    passPhrase = (passPhrase != NULL) ? rstrdup(passPhrase) : NULL;
+-    if (checkPassPhrase(passPhrase) == 0) {
+-	const char *arg;
+-	fprintf(stderr, _("Pass phrase is good.\n"));
+-	rc = 0;
+-	while ((arg = poptGetArg(optCon)) != NULL) {
++    const char *arg;
++    rc = 0;
++    while ((arg = poptGetArg(optCon)) != NULL) {
+ 	    rc += rpmPkgSign(arg, NULL, passPhrase);
+-	}
+-    } else {
+-	fprintf(stderr, _("Pass phrase check failed or gpg key expired\n"));
+     }
+ 
+ exit:
+-    free(passPhrase);
+     free(name);
+     return rc;
+ }
