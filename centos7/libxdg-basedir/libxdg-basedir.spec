@@ -63,7 +63,7 @@ find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
 rm -rf $RPM_BUILD_ROOT
 
 
-#%check
+#%%check
 #make check
 
 %post -p /sbin/ldconfig

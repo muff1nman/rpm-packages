@@ -3,10 +3,36 @@
 import ConfigParser
 import subprocess
 import os
+import logging
 
 from contextlib import contextmanager
 
 from glob import glob
+
+DRY_RUN = False
+RELEASE_FILE = "release"
+
+tito_config = ConfigParser.RawConfigParser()
+tito_config.read('.tito/releasers.conf')
+logging.basicConfig(level=logging.INFO)
+
+def log_command(cmd):
+	logging.info("Executing [%s] in path [%s]" %(cmd, os.getcwd()))
+
+def check_call(cmd):
+	log_command(cmd)
+	if not DRY_RUN:
+		subprocess.check_call(cmd, shell=True)
+	else:
+		logging.debug("Not Executing due to DRY RUN")
+
+def call(cmd):
+	log_command(cmd)
+	if not DRY_RUN:
+		return subprocess.call(cmd, shell=True)
+	else:
+		logging.debug("Not Executing due to DRY RUN")
+		return 0
 
 @contextmanager
 def cd(path):
@@ -21,47 +47,54 @@ def cd(path):
 def try_build(paths):
 	good = set()
 	for path in paths:
-		print("Building specs in %s" %(path))
+		logging.info("Building specs in %s" %(path))
 		with cd(path):
-			tito_cmd = "tito release %s" %(release_target)
-			result = subprocess.call(tito_cmd, shell=True)
+			tito_cmd = "tito release --arg=nosign %s" %(release_target)
+			result = call(tito_cmd)
 			if result == 0:
 				good.add(path)
 	return good
-			
 
+def clear_bucket(s3bucket):
+	# Clear folder if it exists
+	check_cmd = "s3cmd info %s" %(s3bucket)
+	check_result = call(check_cmd)
+	if(check_result == 12):
+		pass
+	elif(check_result == 0):
+		clear_cmd = "s3cmd del -r %s" %(s3bucket)
+		check_call(clear_cmd)
+	else:
+		raise Exception('Unknown bucket status')
 
-branch_name = subprocess.check_output("git rev-parse --abbrev-ref HEAD", shell=True).rstrip()
-release_target = "s3cmd-%s" %(branch_name)
-print("Release target: %s" %(release_target))
+def create_index(s3bucket):
+	# Create the initial index
+	index_upload_cmd = "s3cmd put index.html %s" %(s3bucket)
+	check_call(index_upload_cmd)
 
-# get bucket we are going to clear
-tito_config = ConfigParser.RawConfigParser()
-tito_config.read('.tito/releasers.conf')
-s3bucket = tito_config.get(release_target,'s3cmd')
+def do_release(release_target, path):
+	logging.info("Release target: %s" %(release_target))
+	# get bucket we are going to clear
+	s3bucket = tito_config.get(release_target,'s3cmd')
+	clear_bucket(s3bucket)
+	create_index(s3bucket)
+	src_paths = set(glob(path + '/*/'))
+	while True:
+		logging.info("Attempting another round of builds")
+		good_builds = try_build(src_paths)
+		src_paths -= good_builds
+		if len(good_builds) == 0 or len(src_paths) == 0:
+			break
 
-# Clear folder if it exists
-check_cmd = "s3cmd info %s" %(s3bucket)
-print(check_cmd)
-check_result = subprocess.call(check_cmd, shell=True)
-if(check_result == 12):
-	pass
-elif(check_result == 0):
-	clear_cmd = "s3cmd del -r %s" %(s3bucket)
-	print(clear_cmd)
-	subprocess.check_call(clear_cmd, shell=True)
-else:
-	raise Exception('Unknown bucket status')
-
-# Create the initial index
-index_upload_cmd = "s3cmd put index.html %s" %(s3bucket)
-print(index_upload_cmd)
-subprocess.check_call(index_upload_cmd, shell=True)
 
 paths = set(glob('*/'))
-while True:
-	print("Attempting another round of builds")
-	good_builds = try_build(paths)
-	paths -= good_builds
-	if len(good_builds) == 0 or len(paths) == 0:
-		break
+for path in paths:
+	expected_release_file = os.path.join(path, RELEASE_FILE)
+	if not os.path.isfile(expected_release_file):
+		logging.warn("No %s file found at path %s. This directory has been skipped" % (RELEASE_FILE, path))
+		continue
+	release_targets = [line.rstrip('\n') for line in open(expected_release_file)]
+	logging.info("In directory %s found the following release targets %s" % (path, release_targets))
+	for release_target in release_targets:
+		do_release(release_target, path)
+	
