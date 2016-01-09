@@ -149,7 +149,6 @@ This package provides bitcoind, a peer-to-peer node and wallet server.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 # Install README files
 cp -p %{SOURCE8} %{SOURCE9} %{SOURCE10} .
