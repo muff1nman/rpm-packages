@@ -3,7 +3,7 @@
 
 Name:		BitcoinUnlimited
 Version:	82fd77550aa0e62c2f2ec2fb747bfcafb433013f
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Peer-to-peer digital currency
 
 Group:		Applications/System
@@ -356,6 +356,9 @@ fi
 
 
 %changelog
+* Sat Jan 09 2016 Andrew DeMaria <lostonamountain@gmail.com> 82fd77550aa0e62c2f2ec2fb747bfcafb433013f-2
+- Modified to use BitcoinUnlimited sources
+
 * Thu Oct 15 2015 Michael Hampton <bitcoin@ringingliberty.com> 0.11.1-1
 - Update to upstream 0.11.1
 
