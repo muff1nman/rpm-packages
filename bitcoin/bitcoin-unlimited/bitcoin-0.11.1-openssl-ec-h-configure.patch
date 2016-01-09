@@ -1,0 +1,32 @@
+Revert git commit a19eeaced85cfff3faab19f532b1a0d97b637705
+This check fails if OpenSSL is installed in a non-system location, as in
+this build. Since all our targets are EC-enabled it is also redundant.
+
+-- Michael Hampton <bitcoin@ringingliberty.com>
+
+diff -up bitcoin-0.11.1/configure.ac.openssl-ec-h-configure bitcoin-0.11.1/configure.ac
+--- bitcoin-0.11.1/configure.ac.orig	2015-06-01 00:00:00.000000000 +0000
++++ bitcoin-0.11.1/configure.ac	2015-10-15 14:57:51.097242886 +0000
+@@ -687,12 +687,6 @@
+   )
+ ])
+ 
+-CFLAGS_TEMP="$CFLAGS"
+-LIBS_TEMP="$LIBS"
+-CFLAGS="$CFLAGS $SSL_CFLAGS $CRYPTO_CFLAGS"
+-LIBS="$LIBS $SSL_LIBS $CRYPTO_LIBS"
+-AC_CHECK_HEADER([openssl/ec.h],, AC_MSG_ERROR(OpenSSL ec header missing),)
+-
+ AC_MSG_CHECKING(for a supported OpenSSL version)
+ AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+   #include <openssl/rand.h>
+@@ -707,9 +701,6 @@
+     )]
+ )
+ 
+-CFLAGS="$CFLAGS_TEMP"
+-LIBS="$LIBS_TEMP"
+-
+ BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
+ 
+ AC_MSG_CHECKING([whether to build bitcoind])

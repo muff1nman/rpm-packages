@@ -1,0 +1,14 @@
+https://github.com/bitcoin/bitcoin/issues/6834
+
+diff -up bitcoin-0.11.1/qa/rpc-tests/pruning.py.orig bitcoin-0.11.1/qa/rpc-tests/pruning.py
+--- bitcoin-0.11.1/qa/rpc-tests/pruning.py.orig	2015-10-12 18:58:31.000000000 +0000
++++ bitcoin-0.11.1/qa/rpc-tests/pruning.py	2015-10-15 20:56:47.308397081 +0000
+@@ -239,7 +239,7 @@ class PruneTest(BitcoinTestFramework):
+             outputs = {}
+             t = self.utxo.pop()
+             inputs.append({ "txid" : t["txid"], "vout" : t["vout"]})
+-            remchange = t["amount"] - Decimal("0.001000")
++            remchange = t["amount"] - Decimal("0.005000")
+             outputs[address]=remchange
+             # Create a basic transaction that will send change back to ourself after account for a fee
+             # And then insert the 128 generated transaction outs in the middle rawtx[92] is where the #

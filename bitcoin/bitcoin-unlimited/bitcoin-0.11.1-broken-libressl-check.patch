@@ -1,0 +1,32 @@
+diff -u bitcoin-0.11.1/configure.ac.orig bitcoin-0.11.1/configure.ac
+--- bitcoin-0.11.1/configure.ac.orig	2015-06-01 00:00:00.000000000 +0000
++++ bitcoin-0.11.1/configure.ac	2015-10-15 15:04:49.948601521 +0000
+@@ -679,28 +679,6 @@
+   fi
+ fi
+ 
+-AC_CHECK_LIB([crypto],[RAND_egd],[],[
+-  AC_ARG_WITH([libressl],
+-    [AS_HELP_STRING([--with-libressl],[Build with system LibreSSL (default is no; DANGEROUS; NOT SUPPORTED)])],
+-    [AC_MSG_WARN([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])],
+-    [AC_MSG_ERROR([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])]
+-  )
+-])
+-
+-AC_MSG_CHECKING(for a supported OpenSSL version)
+-AC_LINK_IFELSE([AC_LANG_PROGRAM([[
+-  #include <openssl/rand.h>
+-  ]],
+-  [[RAND_egd(NULL);]])],
+-  [AC_MSG_RESULT(yes)],
+-  [
+-    AC_ARG_WITH([libressl],
+-    [AS_HELP_STRING([--with-libressl],[Build with system LibreSSL (default is no; DANGEROUS; NOT SUPPORTED)])],
+-    [AC_MSG_WARN([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])],
+-    [AC_MSG_ERROR([Detected LibreSSL: This is NOT supported, and may break consensus compatibility!])]
+-    )]
+-)
+-
+ BITCOIN_QT_PATH_PROGS([PROTOC], [protoc],$protoc_bin_path)
+ 
+ AC_MSG_CHECKING([whether to build bitcoind])
