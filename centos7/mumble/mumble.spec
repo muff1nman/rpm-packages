@@ -141,7 +141,6 @@ ln -s ../libcelt071.so.0.0.0 %{buildroot}%{_libdir}/%{name}/libcelt.so.0.7.0
 
 mkdir -p %{buildroot}%{_sysconfdir}/murmur/
 install -pD scripts/murmur.ini %{buildroot}%{_sysconfdir}/murmur/murmur.ini
-ln -s /etc/murmur/murmur.ini %{buildroot}%{_sysconfdir}/%{name}-server.ini
 install -pD -m0644 %{SOURCE1} %{buildroot}%{_unitdir}/murmur.service
 
 mkdir -p %{buildroot}%{_datadir}/%{name}/
@@ -223,7 +222,6 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null ||:
 %{_unitdir}/murmur.service
 %{_sbindir}/%{name}-server
 %config(noreplace) %attr(664,mumble-server,mumble-server) %{_sysconfdir}/murmur/murmur.ini
-%config(noreplace) %attr(664,mumble-server,mumble-server) %{_sysconfdir}/mumble-server.ini
 %{_mandir}/man1/murmurd.1*
 %attr(664,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/murmur
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/murmur.conf

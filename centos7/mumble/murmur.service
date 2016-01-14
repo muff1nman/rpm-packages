@@ -6,7 +6,7 @@ After=network.target mysqld.service
 User=mumble-server
 Type=forking
 PIDFile=/run/mumble-server/mumble-server.pid
-ExecStart=/usr/sbin/murmurd -ini /etc/mumble-server.ini
+ExecStart=/usr/sbin/murmurd -ini /etc/murmur/murmur.ini
 
 [Install]
 WantedBy=multi-user.target
