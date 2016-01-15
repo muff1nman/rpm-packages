@@ -5,7 +5,7 @@ After=network.target mysqld.service
 [Service]
 User=murmur
 Type=forking
-PIDFile=/run/murmur.pid
+PIDFile=/run/murmur/murmur.pid
 ExecStart=/usr/sbin/murmurd -ini /etc/murmur/murmur.ini
 
 [Install]

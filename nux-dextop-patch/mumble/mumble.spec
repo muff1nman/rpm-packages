@@ -170,6 +170,13 @@ install -pD -m0644 scripts/murmur.conf %{buildroot}%{_sysconfdir}/dbus-1/system.
 #dir for murmur.sqlite
 mkdir -p %{buildroot}%{_localstatedir}/lib/murmur/
 
+#log dir
+mkdir -p %{buildroot}%{_localstatedir}/log/mumble-server/
+
+#pid dir
+mkdir -p %{buildroot}%{_localstatedir}/run/
+install -d -m 0710 %{buildroot}%{_localstatedir}/run/murmur/
+
 #tmpfiles.d
 mkdir -p %{buildroot}%{_sysconfdir}/tmpfiles.d
 install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/tmpfiles.d/%{name}.conf
@@ -216,6 +223,8 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null ||:
 %attr(664,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/murmur
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/murmur.conf
 %dir %attr(-,murmur,murmur) %{_localstatedir}/lib/murmur/
+%dir %attr(-,murmur,murmur) %{_localstatedir}/log/murmur/
+%dir %attr(-,murmur,murmur) %{_localstatedir}/run/murmur/
 %config(noreplace) %{_sysconfdir}/tmpfiles.d/%{name}.conf
 
 %files plugins
