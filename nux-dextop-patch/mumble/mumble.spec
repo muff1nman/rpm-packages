@@ -171,7 +171,7 @@ install -pD -m0644 scripts/murmur.conf %{buildroot}%{_sysconfdir}/dbus-1/system.
 mkdir -p %{buildroot}%{_localstatedir}/lib/murmur/
 
 #log dir
-mkdir -p %{buildroot}%{_localstatedir}/log/mumble-server/
+mkdir -p %{buildroot}%{_localstatedir}/log/murmur/
 
 #pid dir
 mkdir -p %{buildroot}%{_localstatedir}/run/
