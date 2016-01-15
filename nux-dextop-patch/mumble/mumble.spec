@@ -49,7 +49,6 @@ won't be audible to other players.
 %package -n murmur
 Summary:	Mumble voice chat server
 Group:		System Environment/Daemons
-Provides:	%{name}-server = %{version}-%{release}
 
 Requires(pre): shadow-utils
 Requires(post): systemd
@@ -58,7 +57,7 @@ Requires(postun): systemd
 Requires: qt4-sqlite
 
 %description -n murmur
-Murmur(also called mumble-server) is part of the VoIP suite Mumble
+Murmur is part of the VoIP suite Mumble
 primarily aimed at gamers. Murmur is the server component of the suite.
 
 %package plugins
@@ -93,10 +92,10 @@ comes from the direction of their characters, and echo cancellation
 so that the sound from your loudspeakers won't be audible to other players.
 
 %pre -n murmur
-getent group mumble-server >/dev/null || groupadd -r mumble-server
-getent passwd mumble-server >/dev/null || \
-useradd -r -g mumble-server -d %{_localstatedir}/lib/%{name}-server/ -s /sbin/nologin \
--c "Mumble-server(murmur) user" mumble-server
+getent group murmur >/dev/null || groupadd -r murmur
+getent passwd murmur >/dev/null || \
+useradd -r -g murmur -d %{_localstatedir}/lib/murmur/ -s /sbin/nologin \
+-c "murmur user" murmur
 exit 0
 
 %prep
@@ -122,7 +121,6 @@ make release
 %install
 install -pD -m0755 release/%{name} %{buildroot}%{_bindir}/%{name}
 install -pD -m0755 release/murmurd %{buildroot}%{_sbindir}/murmurd
-ln -s murmurd %{buildroot}%{_sbindir}/%{name}-server
 
 #translations
 mkdir -p %{buildroot}/%{_datadir}/%{name}/translations
@@ -169,15 +167,8 @@ install -pD -m0644 scripts/%{name}.protocol %{buildroot}%{_datadir}/kde4/service
 # murmur.conf
 install -pD -m0644 scripts/murmur.conf %{buildroot}%{_sysconfdir}/dbus-1/system.d/murmur.conf
 
-#dir for mumble-server.sqlite
-mkdir -p %{buildroot}%{_localstatedir}/lib/mumble-server/
-
-#log dir
-mkdir -p %{buildroot}%{_localstatedir}/log/mumble-server/
-
-#pid dir
-mkdir -p %{buildroot}%{_localstatedir}/run/
-install -d -m 0710 %{buildroot}%{_localstatedir}/run/mumble-server/
+#dir for murmur.sqlite
+mkdir -p %{buildroot}%{_localstatedir}/lib/murmur/
 
 #tmpfiles.d
 mkdir -p %{buildroot}%{_sysconfdir}/tmpfiles.d
@@ -218,16 +209,13 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null ||:
 %files -n murmur
 %doc README README.Linux LICENSE CHANGES
 %doc scripts/murmur.pl scripts/murmur-user-wrapper
-%attr(-,mumble-server,mumble-server) %{_sbindir}/murmurd
+%attr(-,murmur,murmur) %{_sbindir}/murmurd
 %{_unitdir}/murmur.service
-%{_sbindir}/%{name}-server
-%config(noreplace) %attr(664,mumble-server,mumble-server) %{_sysconfdir}/murmur/murmur.ini
+%config(noreplace) %attr(664,murmur,murmur) %{_sysconfdir}/murmur/murmur.ini
 %{_mandir}/man1/murmurd.1*
 %attr(664,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/murmur
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/murmur.conf
-%dir %attr(-,mumble-server,mumble-server) %{_localstatedir}/lib/mumble-server/
-%dir %attr(-,mumble-server,mumble-server) %{_localstatedir}/log/mumble-server/
-%dir %attr(-,mumble-server,mumble-server) %{_localstatedir}/run/mumble-server/
+%dir %attr(-,murmur,murmur) %{_localstatedir}/lib/murmur/
 %config(noreplace) %{_sysconfdir}/tmpfiles.d/%{name}.conf
 
 %files plugins
