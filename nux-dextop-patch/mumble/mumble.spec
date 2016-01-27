@@ -1,6 +1,6 @@
 Name:		mumble
 Version:	1.2.10
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	Voice chat suite aimed at gamers
 
 Group:		Applications/Internet
@@ -240,6 +240,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null ||:
 %{_datadir}/kde4/services/mumble.protocol
 
 %changelog
+* Tue Jan 26 2016 Andrew DeMaria <lostonamountain@gmail.com> 1.2.10-6
+- Added run dir (lostonamountain@gmail.com)
+
 * Thu Jan 14 2016 Andrew DeMaria <lostonamountain@gmail.com> 1.2.10-5
 - Ensured naming was consistent (lostonamountain@gmail.com)
 
