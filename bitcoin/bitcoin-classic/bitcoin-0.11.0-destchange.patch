@@ -1,0 +1,41 @@
+diff -up bitcoin-0.11.0/src/wallet/rpcwallet.cpp.orig bitcoin-0.11.0/src/wallet/rpcwallet.cpp
+--- bitcoin-0.11.0/src/wallet/rpcwallet.cpp.orig	2015-07-10 17:23:55.000000000 +0000
++++ bitcoin-0.11.0/src/wallet/rpcwallet.cpp	2015-07-27 16:12:41.226469401 +0000
+@@ -5,6 +5,7 @@
+ 
+ #include "amount.h"
+ #include "base58.h"
++#include "coincontrol.h"
+ #include "core_io.h"
+ #include "init.h"
+ #include "main.h"
+@@ -368,9 +369,14 @@ static void SendMoney(const CTxDestinati
+     std::string strError;
+     vector<CRecipient> vecSend;
+     int nChangePosRet = -1;
++    CCoinControl coinControl;
++    if (mapArgs.count("-destchange")) {
++        CBitcoinAddress addr = CBitcoinAddress(mapArgs["-destchange"]);
++        coinControl.destChange = addr.Get();
++    }
+     CRecipient recipient = {scriptPubKey, nValue, fSubtractFeeFromAmount};
+     vecSend.push_back(recipient);
+-    if (!pwalletMain->CreateTransaction(vecSend, wtxNew, reservekey, nFeeRequired, nChangePosRet, strError)) {
++    if (!pwalletMain->CreateTransaction(vecSend, wtxNew, reservekey, nFeeRequired, nChangePosRet, strError, &coinControl)) {
+         if (!fSubtractFeeFromAmount && nValue + nFeeRequired > pwalletMain->GetBalance())
+             strError = strprintf("Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!", FormatMoney(nFeeRequired));
+         throw JSONRPCError(RPC_WALLET_ERROR, strError);
+@@ -1011,7 +1017,12 @@ Value sendmany(const Array& params, bool
+     CAmount nFeeRequired = 0;
+     int nChangePosRet = -1;
+     string strFailReason;
+-    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, nChangePosRet, strFailReason);
++    CCoinControl coinControl;
++    if (mapArgs.count("-destchange")) {
++        CBitcoinAddress addr = CBitcoinAddress(mapArgs["-destchange"]);
++        coinControl.destChange = addr.Get();
++    }
++    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, nChangePosRet, strFailReason, &coinControl);
+     if (!fCreated)
+         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strFailReason);
+     if (!pwalletMain->CommitTransaction(wtx, keyChange))
