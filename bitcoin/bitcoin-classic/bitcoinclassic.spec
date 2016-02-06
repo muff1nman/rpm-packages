@@ -3,7 +3,7 @@
 
 Name:		bitcoinclassic
 Version:	0.11.2.cl1.b2
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Peer-to-peer digital currency
 
 Group:		Applications/System
@@ -351,6 +351,9 @@ fi
 
 
 %changelog
+* Sat Feb 06 2016 Andrew DeMaria <lostonamountain@gmail.com> 0.11.2.cl1.b2-2
+- Created bitcoinclassic spec
+
 * Wed Dec 2 2015 Michael Hampton <bitcoin@ringingliberty.com> 0.11D-1
 - Update to upstream release 0.11D
 
