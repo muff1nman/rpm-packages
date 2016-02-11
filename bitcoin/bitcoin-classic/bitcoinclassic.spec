@@ -2,7 +2,7 @@
 %global selinux_variants mls strict targeted
 
 Name:		bitcoinclassic
-Version:	0.11.2.cl1.b2
+Version:	0.11.2.cl1
 Release:	3%{?dist}
 Summary:	Peer-to-peer digital currency
 
