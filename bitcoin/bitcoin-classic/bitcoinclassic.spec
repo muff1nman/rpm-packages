@@ -3,7 +3,7 @@
 
 Name:		bitcoinclassic
 Version:	0.11.2.cl1
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Peer-to-peer digital currency
 
 Group:		Applications/System
@@ -351,6 +351,9 @@ fi
 
 
 %changelog
+* Wed Feb 10 2016 Andrew DeMaria <lostonamountain@gmail.com> 0.11.2.cl1-4
+- Updated version number (lostonamountain@gmail.com)
+
 * Wed Feb 10 2016 Andrew DeMaria <lostonamountain@gmail.com> 0.11.2.cl1.b2-3
 - Updated to release (lostonamountain@gmail.com)
 
