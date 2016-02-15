@@ -1,7 +1,7 @@
 Name:		exfat-utils
 Summary:	Utilities for exFAT file system
 Version:	1.1.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Group:		System Environment/Base
 Source0:	https://docs.google.com/uc?export=download&id=0B7CLI-REKbE3UzNtSkRvdHBpdjQ#/%{name}-%{version}.tar.gz
