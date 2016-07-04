@@ -14,7 +14,10 @@ BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 BuildRequires:  hidapi-devel
 Requires:       hidapi
-Requires:       python2-mnemonic python-mnemonic
+Requires:       python2-mnemonic python3-mnemonic
+Requires:       protobuf-python
+Requires:       python3-ecdsa python-ecdsa
+
 
 %description
 A python module for trezor.
