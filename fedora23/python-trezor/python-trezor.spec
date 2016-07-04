@@ -12,8 +12,9 @@ Source0:        https://github.com/%{srcname}/python-%{srcname}/archive/v%{versi
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
-BuildRequires:  libusb-devel
-Requires:       libusb
+BuildRequires:  hidapi-devel
+Requires:       hidapi
+Requires:       python2-mnemonic python-mnemonic
 
 %description
 A python module for trezor.
