@@ -50,16 +50,13 @@ A python module for BIP0039
 
 # Note that there is no %%files section for the unversioned python module if we are building for several python runtimes
 %files -n python2-%{srcname}
-%license COPYING
+%license LICENSE
 %doc README.rst
 %{python2_sitelib}/*
-%{_bindir}/sample-exec-2.7
 
 %files -n python3-%{srcname}
-%license COPYING
+%license LICENSE
 %doc README.rst
 %{python3_sitelib}/*
-%{_bindir}/sample-exec
-%{_bindir}/sample-exec-3.4
 
 %changelog
