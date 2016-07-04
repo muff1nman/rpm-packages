@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.7.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        %{sum}
 
 License:        LGPL
@@ -30,8 +30,8 @@ Summary:        %{sum}
 %description -n python3-%{srcname}
 A python module for trezor.
 
-%prep -n python-%{srcname}-%{version}
-%autosetup -n %{srcname}-%{version}
+%prep 
+%autosetup -n python-%{srcname}-%{version}
 
 %build
 %py2_build
