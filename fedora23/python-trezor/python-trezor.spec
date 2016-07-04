@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.7.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        %{sum}
 
 License:        LGPL
@@ -12,6 +12,8 @@ Source0:        https://github.com/%{srcname}/python-%{srcname}/archive/v%{versi
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
+BuildRequires:  libusb-devel
+Requires:       libusb
 
 %description
 A python module for trezor.
