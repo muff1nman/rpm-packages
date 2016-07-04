@@ -2,13 +2,13 @@
 %global sum A library to support trezor via python
 
 Name:           python-%{srcname}
-Version:        v0.7.0
+Version:        0.7.0
 Release:        1%{?dist}
 Summary:        %{sum}
 
 License:        LGPL
 URL:            http://pypi.python.org/pypi/%{srcname}
-Source0:        https://github.com/%{srcname}/python-%{srcname}/archive/%{version}.tar.gz
+Source0:        https://github.com/%{srcname}/python-%{srcname}/archive/v%{version}.tar.gz
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
