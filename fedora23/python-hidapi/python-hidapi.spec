@@ -10,7 +10,6 @@ License:        GPL
 URL:            http://pypi.python.org/pypi/%{srcname}
 Source0:        https://pypi.python.org/packages/75/53/7c6789e1ff820ae9732f117de8658830b3d33420a8ef2de72faa9419d049/hidapi-0.7.99.post17.tar.gz
 
-BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 BuildRequires:  libusb-devel
 Requires:       libusb
