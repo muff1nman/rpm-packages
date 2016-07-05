@@ -1,0 +1,11 @@
+diff --git a/setup.py b/setup.py
+index df768fb..eb003d8 100644
+--- a/setup.py
++++ b/setup.py
+@@ -85,5 +85,5 @@ setup(
+     ],
+     ext_modules = modules,
+     setup_requires = ['Cython'],
+-    install_requires = ['setuptools>=19.0'],
++    install_requires = ['setuptools>=18.0'],
+ )
