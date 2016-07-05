@@ -55,10 +55,10 @@ Python wrapper for the hidapi
 # Note that there is no %%files section for the unversioned python module if we are building for several python runtimes
 %files -n python2-%{srcname}
 %doc README.rst
-%{python2_sitelib}/*
+%{python2_sitearch}/*
 
 %files -n python3-%{srcname}
 %doc README.rst
-%{python3_sitelib}/*
+%{python3_sitearch}/*
 
 %changelog
