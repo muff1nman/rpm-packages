@@ -13,6 +13,7 @@ Source0:        https://github.com/%{srcname}/python-%{srcname}/archive/v%{versi
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 Requires:       python2-hidapi
+BuildRequires:  python2-hidapi
 Requires:       python2-mnemonic python3-mnemonic
 Requires:       protobuf-python
 Requires:       python3-ecdsa python-ecdsa
@@ -58,13 +59,10 @@ A python module for trezor.
 %license COPYING
 %doc README.rst
 %{python2_sitelib}/*
-%{_bindir}/sample-exec-2.7
 
 %files -n python3-%{srcname}
 %license COPYING
 %doc README.rst
 %{python3_sitelib}/*
-%{_bindir}/sample-exec
-%{_bindir}/sample-exec-3.4
 
 %changelog
