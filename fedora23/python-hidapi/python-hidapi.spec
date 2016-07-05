@@ -12,6 +12,8 @@ Source0:        https://pypi.python.org/packages/75/53/7c6789e1ff820ae9732f117de
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
+BuildRequires:  libusb-devel
+Requires:       libusb
 
 %description
 Python wrapper for the hidapi
