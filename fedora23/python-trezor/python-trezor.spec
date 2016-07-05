@@ -56,10 +56,12 @@ A python module for trezor.
 %license COPYING
 %doc README.rst
 %{python2_sitelib}/*
+%{_bindir}/trezorctl
 
 %files -n python3-%{srcname}
 %license COPYING
 %doc README.rst
 %{python3_sitelib}/*
+%{_bindir}/trezorctl
 
 %changelog
