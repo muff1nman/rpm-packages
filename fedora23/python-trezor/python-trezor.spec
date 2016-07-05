@@ -2,8 +2,8 @@
 %global sum A library to support trezor via python
 
 Name:           python-%{srcname}
-Version:        0.7.0
-Release:        5%{?dist}
+Version:        0.6.13
+Release:        6%{?dist}
 Summary:        %{sum}
 
 License:        LGPL
