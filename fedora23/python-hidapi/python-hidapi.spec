@@ -15,6 +15,7 @@ BuildRequires:  python2-devel python3-devel
 BuildRequires:  libusb-devel
 Requires:       libusb
 Requires:       systemd-libs
+BuildRequires:  systemd-devel
 
 %description
 Python wrapper for the hidapi
