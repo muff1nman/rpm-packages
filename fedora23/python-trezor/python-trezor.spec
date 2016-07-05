@@ -17,7 +17,7 @@ Requires:       python2-mnemonic python3-mnemonic
 Requires:       protobuf-python
 Requires:       python3-ecdsa python-ecdsa
 # For test
-BuildRequires:  python2-hidapi python3-hidapi python-ecdsa python3-ecdsa protobuf-python
+BuildRequires:  python2-hidapi python3-hidapi python-ecdsa python3-ecdsa protobuf-python python2-mnemonic python3-mnemonic
 
 
 %description
