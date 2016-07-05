@@ -14,6 +14,7 @@ BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
 BuildRequires:  libusb-devel
 Requires:       libusb
+Requires:       systemd-libs
 
 %description
 Python wrapper for the hidapi
