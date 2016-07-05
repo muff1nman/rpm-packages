@@ -62,3 +62,6 @@ Python wrapper for the hidapi
 %{python3_sitearch}/*
 
 %changelog
+* Tue Jul 05 2016 Andrew DeMaria <lostonamountain@gmail.com> 0.7.99.post17-2
+- Relax setuptools requirement (lostonamountain@gmail.com)
+
