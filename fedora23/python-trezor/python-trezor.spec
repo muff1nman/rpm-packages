@@ -12,11 +12,12 @@ Source0:        https://github.com/%{srcname}/python-%{srcname}/archive/v%{versi
 
 BuildArch:      noarch
 BuildRequires:  python2-devel python3-devel
-Requires:       python2-hidapi
-BuildRequires:  python2-hidapi
+Requires:       python2-hidapi python3-hidapi
 Requires:       python2-mnemonic python3-mnemonic
 Requires:       protobuf-python
 Requires:       python3-ecdsa python-ecdsa
+# For test
+BuildRequires:  python2-hidapi python3-hidapi python-ecdsa python3-ecdsa
 
 
 %description
