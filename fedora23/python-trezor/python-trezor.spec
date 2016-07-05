@@ -51,10 +51,6 @@ A python module for trezor.
 %py2_install
 %py3_install
 
-%check
-%{__python2} setup.py test
-%{__python3} setup.py test
-
 # Note that there is no %%files section for the unversioned python module if we are building for several python runtimes
 %files -n python2-%{srcname}
 %license COPYING
