@@ -31,6 +31,8 @@ Requires:       python-pbkdf2
 Requires:       python-jsonrpclib
 Requires:       PyQt4
 
+Recommends:     python2-trezor
+
 %description
 Electrum is an easy to use Bitcoin client. It protects you from losing
 coins in a backup mistake or computer failure, because your wallet can
