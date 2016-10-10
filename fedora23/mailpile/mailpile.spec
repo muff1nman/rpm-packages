@@ -7,7 +7,7 @@ Summary: An e-mail search engine and webmail client
 Name: %{name}
 Version: %{version}
 Release: %{release}%{?dist}
-Source0: %{name}.tar.gz
+Source0: %{name}.tgz
 License: AGPL-3.0+
 Group: Applications/Internet
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
