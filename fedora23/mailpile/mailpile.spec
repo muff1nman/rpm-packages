@@ -1,6 +1,5 @@
 %define name mailpile
-%define version 0.4.0.dev20141126
-%define unmangled_version 0.4.0.dev20141126
+%define version 0.4.0.dev.gpgme
 %define release 1
 
 Summary: An e-mail search engine and webmail client
@@ -112,10 +111,10 @@ Software Foundation. See the file `COPYING.md` for details.
 %setup -n %{name}
 
 %build
-python setup.py build
+PBR_VERSION=%{version} python setup.py build
 
 %install
-python setup.py install --single-version-externally-managed -O1 --prefix=%{_prefix} --root=%{buildroot} --record=INSTALLED_FILES
+PBR_VERSION=%{version} python setup.py install --single-version-externally-managed -O1 --prefix=%{_prefix} --root=%{buildroot} --record=INSTALLED_FILES
 
 # FIXME: This does not work...
 #%find_lang %{name}
