@@ -14,6 +14,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: python-devel 
 BuildRequires: python-setuptools
 BuildRequires: gettext
+BuildRequires: python-pbr
 Requires: python-pgpdump
 Requires: python-pillow
 Requires: python-pydns
