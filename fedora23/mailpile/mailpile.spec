@@ -122,7 +122,7 @@ PBR_VERSION=%{version} python setup.py install --single-version-externally-manag
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE-2.0.txt
+%doc README.md AGPLv3.txt
 %{python_sitelib}/*
 %{_bindir}/*
 #%{_mandir}/*
