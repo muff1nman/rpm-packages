@@ -1,9 +1,9 @@
 #debug info would be empty due to no binarys
-%define debug_package %{nil}
+%global debug_package %{nil}
 
 Name: bless
 Version: 0.6.0
-Release: 17%{?dist}
+Release: 20%{?dist}
 Summary: High quality, full featured hex editor    
 
 Group: Applications/Editors         
@@ -66,6 +66,15 @@ desktop-file-install --dir=${RPM_BUILD_ROOT}%{_datadir}/applications \
 %{_datadir}/omf/bless/
 
 %changelog
+* Thu Oct 13 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.0-20
+- mono rebuild for aarch64 support
+
+* Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.6.0-19
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
+
+* Sat Jan 02 2016 Adel Gadllah <adel.gadllah@gmail.com> - 0.6.0-18
+- Use %%global instead of %%define
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.0-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
