@@ -16,6 +16,7 @@ Source0:        https://download.electrum.org/%{version}/Electrum-%{version}.tar
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 BuildRequires:  PyQt4-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
@@ -31,7 +32,9 @@ Requires:       python-pbkdf2
 Requires:       python-jsonrpclib
 Requires:       PyQt4
 
+%if 0%{?fedora}
 Recommends:     python2-trezor
+%endif
 
 %description
 Electrum is an easy to use Bitcoin client. It protects you from losing
