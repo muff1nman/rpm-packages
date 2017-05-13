@@ -12,21 +12,25 @@ Source0:        https://pypi.python.org/packages/source/p/%{srcname}/%{srcname}-
 Patch0:         pbkdf2-license.patch
 
 BuildArch:      noarch
-BuildRequires:  python2-devel python3-devel
+BuildRequires:  python2-devel
+
+%if 0%{!?el7:1}
+BuildRequires:  python3-devel
+%endif
 
 %description
 A pure Python Implementation of the password-based key derivation function,
 PBKDF2, specified in RSA PKCS#5 v2.0.
 
-%package -n python%{python2_pkgversion}-%{srcname}
+%package -n python2-%{srcname}
 Summary:        %{sum}
-%{?python_provide:%python_provide python%{python2_pkgversion}-%{srcname}}
+%{?python_provide:%python_provide python2-%{srcname}}
 
-%description -n python%{python2_pkgversion}-%{srcname}
+%description -n python2-%{srcname}
 A pure Python Implementation of the password-based key derivation function,
 PBKDF2, specified in RSA PKCS#5 v2.0.
 
-
+%if 0%{!?el7:1}
 %package -n python%{python3_pkgversion}-%{srcname}
 Summary:        %{sum}
 %{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
@@ -34,6 +38,7 @@ Summary:        %{sum}
 %description -n python%{python3_pkgversion}-%{srcname}
 A pure Python Implementation of the password-based key derivation function,
 PBKDF2, specified in RSA PKCS#5 v2.0.
+%endif
 
 %prep
 %setup -q -n %{srcname}-%{version}
@@ -44,11 +49,15 @@ rm -rf %{srcname}.egg-info
 
 %build
 %py2_build
+%if 0%{!?el7:1}
 %py3_build
+%endif
 
 %install
 %py2_install
+%if 0%{!?el7:1}
 %py3_install
+%endif
 
 # Remove shebang lines from .py files that aren't executable, and
 # remove executability from .py files that don't have a shebang line:
@@ -59,15 +68,17 @@ find %{buildroot} -name \*.py \
   -perm /u+x,g+x,o+x ! -exec grep -m 1 -q '^#!' {} \; \
   -exec chmod a-x {} \; \) \)
  
-%files -n python%{python2_pkgversion}-%{srcname}
+%files -n python2-%{srcname}
 %doc PKG-INFO
 %license LICENSE
 %{python2_sitelib}/*
 
+%if 0%{!?el7:1}
 %files -n python%{python3_pkgversion}-%{srcname}
 %doc PKG-INFO
 %license LICENSE
 %{python3_sitelib}/*
+%endif
 
 %changelog
 * Mon Apr 25 2016 Samuel Gyger <gygers@fsfe.org> - 1.3-4
