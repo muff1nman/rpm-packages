@@ -18,20 +18,20 @@ BuildRequires:  python2-devel python3-devel
 A pure Python Implementation of the password-based key derivation function,
 PBKDF2, specified in RSA PKCS#5 v2.0.
 
-%package -n python2-%{srcname}
+%package -n python%{python2_pkgversion}-%{srcname}
 Summary:        %{sum}
-%{?python_provide:%python_provide python2-%{srcname}}
+%{?python_provide:%python_provide python%{python2_pkgversion}-%{srcname}}
 
-%description -n python2-%{srcname}
+%description -n python%{python2_pkgversion}-%{srcname}
 A pure Python Implementation of the password-based key derivation function,
 PBKDF2, specified in RSA PKCS#5 v2.0.
 
 
-%package -n python3-%{srcname}
+%package -n python%{python3_pkgversion}-%{srcname}
 Summary:        %{sum}
-%{?python_provide:%python_provide python3-%{srcname}}
+%{?python_provide:%python_provide python%{python3_pkgversion}-%{srcname}}
 
-%description -n python3-%{srcname}
+%description -n python%{python3_pkgversion}-%{srcname}
 A pure Python Implementation of the password-based key derivation function,
 PBKDF2, specified in RSA PKCS#5 v2.0.
 
@@ -59,12 +59,12 @@ find %{buildroot} -name \*.py \
   -perm /u+x,g+x,o+x ! -exec grep -m 1 -q '^#!' {} \; \
   -exec chmod a-x {} \; \) \)
  
-%files -n python2-%{srcname}
+%files -n python%{python2_pkgversion}-%{srcname}
 %doc PKG-INFO
 %license LICENSE
 %{python2_sitelib}/*
 
-%files -n python3-%{srcname}
+%files -n python%{python3_pkgversion}-%{srcname}
 %doc PKG-INFO
 %license LICENSE
 %{python3_sitelib}/*
