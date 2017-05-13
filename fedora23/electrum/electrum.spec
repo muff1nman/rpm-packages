@@ -7,7 +7,7 @@
 
 Name:           %{srcname}
 Version:        %{major}.%{minor}.%{patchlevel}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        %{sum}
 
 License:        MIT
@@ -89,6 +89,9 @@ desktop-file-install                                    \
 %{python2_sitelib}/*
 
 %changelog
+* Fri May 12 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.6.4-3
+- Tweaks to build for el7
+
 * Tue Apr 26 2016 gyger@fsfe.org - 2.6.4-2
 - Fixed for python2 and new packaging requirements.
 
