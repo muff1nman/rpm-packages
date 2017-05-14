@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        1.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        %{sum}
 Group:          Development/Languages
 License:        MIT
@@ -81,6 +81,9 @@ find %{buildroot} -name \*.py \
 %endif
 
 %changelog
+* Sat May 13 2017 Andrew DeMaria <lostonamountain@gmail.com> 1.3-5
+- Added build for el7
+
 * Mon Apr 25 2016 Samuel Gyger <gygers@fsfe.org> - 1.3-4
 - Build for python2 and python3
 - Use pybuild and pyinstall
