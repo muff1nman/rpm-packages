@@ -14,6 +14,7 @@ Patch0:         slowaes-license.patch
 
 BuildArch:      noarch
 BuildRequires:  python2-devel
+BuildRequires:  python-setuptools
 
 %description
 A pure Python AES Implementation.
