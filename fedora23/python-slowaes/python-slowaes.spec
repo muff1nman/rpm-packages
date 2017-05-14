@@ -3,7 +3,7 @@
 
 Name:           python-%{srcname}
 Version:        0.1a1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        %{sum}
 
 Group:          Development/Languages
@@ -55,6 +55,9 @@ find %{buildroot} -name \*.py \
 %{python2_sitelib}/*
 
 %changelog
+* Sat May 13 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1a1-6
+- Package build for el7
+
 * Mon Apr 25 2016 Samuel Gyger <gyger@fsfe.org> - 0.1a1-5
 - Added correct versioning for python2
 - Use pybuild and pyinstall
