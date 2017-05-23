@@ -1,0 +1,12 @@
+diff -up libburn-1.2.4/doc/doxygen.conf.in.backup libburn-1.2.4/doc/doxygen.conf.in
+--- libburn-1.2.4/doc/doxygen.conf.in.backup	2012-12-04 10:40:27.075353301 +0100
++++ libburn-1.2.4/doc/doxygen.conf.in	2012-12-04 10:40:53.833494434 +0100
+@@ -689,7 +689,7 @@ HTML_HEADER            =
+ # each generated HTML page. If it is left blank doxygen will generate a 
+ # standard footer.
+ 
+-HTML_FOOTER            = 
++HTML_FOOTER            = doc/empty_footer.html
+ 
+ # The HTML_STYLESHEET tag can be used to specify a user-defined cascading 
+ # style sheet that is used by each HTML page. It can be used to 
