@@ -45,12 +45,15 @@ def cd(path):
 		os.chdir(prevdir)
 
 # Returns the builds that succeeded
-def try_build(paths):
+def try_build(release_target, paths):
 	good = set()
+        test = ""
+        if release_target.endswith("-test") or release_target.endswith("-test-src"):
+            test = "--test"
 	for path in paths:
 		logging.info("Building specs in %s" %(path))
 		with cd(path):
-			tito_cmd = "tito release --arg=nosign %s" %(release_target)
+			tito_cmd = "tito release %s --arg=nosign %s" %(test, release_target)
 			result = call(tito_cmd)
 			if result == 0:
 				good.add(path)
@@ -82,7 +85,7 @@ def do_release(release_target, path):
 	src_paths = set(glob(path + '/*/'))
 	while True:
 		logging.info("Attempting another round of builds")
-		good_builds = try_build(src_paths)
+		good_builds = try_build(release_target, src_paths)
 		src_paths -= good_builds
 		if len(good_builds) == 0 or len(src_paths) == 0:
 			break
