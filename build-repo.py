@@ -4,6 +4,7 @@ import ConfigParser
 import subprocess
 import os
 import logging
+import sys
 
 from contextlib import contextmanager
 
@@ -86,15 +87,16 @@ def do_release(release_target, path):
 		if len(good_builds) == 0 or len(src_paths) == 0:
 			break
 
-def release_repo(path):
-	expected_release_file = os.path.join(path, RELEASE_FILE)
-	if not os.path.isfile(expected_release_file):
-		raise RuntimeError("No %s file found at path %s" % (RELEASE_FILE, path))
-	release_targets = [line.rstrip('\n') for line in open(expected_release_file)]
-	logging.info("In directory %s found the following release targets %s" % (path, release_targets))
+def release_repo(path, release_targets=[]):
+        if not release_targets:
+            expected_release_file = os.path.join(path, RELEASE_FILE)
+            if not os.path.isfile(expected_release_file):
+                    raise RuntimeError("No %s file found at path %s" % (RELEASE_FILE, path))
+            release_targets = [line.rstrip('\n') for line in open(expected_release_file)]
+	logging.info("In directory %s using the following release targets %s" % (path, release_targets))
 	for release_target in release_targets:
 		do_release(release_target, path)
 
 if __name__ == "__main__":
         path = sys.argv[1]
-	release_repo(path)
+	release_repo(path, sys.argv[2:])
