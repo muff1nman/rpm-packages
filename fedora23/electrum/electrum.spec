@@ -89,6 +89,9 @@ desktop-file-install                                    \
 %{python2_sitelib}/*
 
 %changelog
+* Sun May 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.8.2-3
+- Upgrade electrum (lostonamountain@gmail.com)
+
 * Fri May 12 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.6.4-3
 - Tweaks to build for el7
 
