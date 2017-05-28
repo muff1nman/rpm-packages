@@ -1,6 +1,6 @@
 %define major 2
-%define minor 6
-%define patchlevel 4 
+%define minor 8
+%define patchlevel 2 
 
 %global srcname electrum
 %global sum A lightweight Bitcoin Client
