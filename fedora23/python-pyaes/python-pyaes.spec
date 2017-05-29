@@ -1,7 +1,6 @@
 %global srcname pyaes
 
 %if 0%{?fedora} > 23
-%global with_p2subpkg 1
 %global python2_pkgversion 2
 %else
 %global python2_pkgversion %{nil}
@@ -18,23 +17,14 @@ Source0:	https://github.com/ricmoo/%{srcname}/archive/v%{version}/%{name}-%{vers
 Patch1:		python-pyaes-0001-Use-relative-imports-during-tests.patch
 BuildArch:      noarch
 
-
-%description
-A pure-Python implementation of the AES block cipher algorithm and the common
-modes of operation (CBC, CFB, CTR, ECB and OFB).
-
-
-%package -n python%{python2_pkgversion}-%{srcname}
-Summary:	%{summary}
 BuildRequires:  python%{python2_pkgversion}-crypto
 BuildRequires:  python2-devel
 %{?python_provide:%python_provide python%{python2_pkgversion}-%{srcname}}
 
 
-%description -n python%{python2_pkgversion}-%{srcname}
+%description
 A pure-Python implementation of the AES block cipher algorithm and the common
 modes of operation (CBC, CFB, CTR, ECB and OFB).
-
 
 %package -n python3-%{srcname}
 Summary:	%{summary}
