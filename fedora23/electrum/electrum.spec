@@ -7,7 +7,7 @@
 
 Name:           %{srcname}
 Version:        %{major}.%{minor}.%{patchlevel}
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        %{sum}
 
 License:        MIT
@@ -90,6 +90,9 @@ desktop-file-install                                    \
 %{python2_sitelib}/*
 
 %changelog
+* Sun May 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.8.2-4
+- Added missing requires (lostonamountain@gmail.com)
+
 * Sun May 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.8.2-3
 - Upgrade electrum (lostonamountain@gmail.com)
 
