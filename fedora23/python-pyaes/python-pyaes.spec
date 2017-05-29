@@ -1,5 +1,11 @@
 %global srcname pyaes
 
+%if 0%{?fedora} > 23
+%global with_p2subpkg 1
+%global python2_pkgversion 2
+%else
+%global python2_pkgversion %{nil}
+%endif
 
 Name:		python-%{srcname}
 Version:	1.6.0
@@ -18,14 +24,14 @@ A pure-Python implementation of the AES block cipher algorithm and the common
 modes of operation (CBC, CFB, CTR, ECB and OFB).
 
 
-%package -n python2-%{srcname}
+%package -n python%{python2_pkgversion}-%{srcname}
 Summary:	%{summary}
-BuildRequires:  python2-crypto
+BuildRequires:  python%{python2_pkgversion}-crypto
 BuildRequires:  python2-devel
-%{?python_provide:%python_provide python2-%{srcname}}
+%{?python_provide:%python_provide python%{python2_pkgversion}-%{srcname}}
 
 
-%description -n python2-%{srcname}
+%description -n python%{python2_pkgversion}-%{srcname}
 A pure-Python implementation of the AES block cipher algorithm and the common
 modes of operation (CBC, CFB, CTR, ECB and OFB).
 
@@ -66,7 +72,7 @@ modes of operation (CBC, CFB, CTR, ECB and OFB).
 %{__python3} tests/test-util.py
 
 
-%files -n python2-%{srcname}
+%files -n python%{python2_pkgversion}-%{srcname}
 %license LICENSE.txt
 %doc README.md
 %{python2_sitelib}/*
