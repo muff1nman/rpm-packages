@@ -22,6 +22,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 
 Requires:       python2
+Requires:       python2-pysocks
 Requires:       python-ecdsa
 Requires:       python-slowaes
 Requires:       python-dns
