@@ -7,7 +7,7 @@
 
 Name:           %{srcname}
 Version:        %{major}.%{minor}.%{patchlevel}
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        %{sum}
 
 License:        MIT
@@ -91,6 +91,9 @@ desktop-file-install                                    \
 %{python2_sitelib}/*
 
 %changelog
+* Mon Jun 26 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.8.2-6
+- Added missing dependency (lostonamountain@gmail.com)
+
 * Mon Jun 26 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.8.2-5
 - Fixed aes dependency (lostonamountain@gmail.com)
 
