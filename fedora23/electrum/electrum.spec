@@ -31,7 +31,7 @@ Requires:       protobuf-python
 Requires:       python-pbkdf2
 Requires:       python-jsonrpclib
 Requires:       PyQt4
-Requires:       python-aes
+Requires:       python-pyaes
 
 %if 0%{?fedora}
 Recommends:     python2-trezor
