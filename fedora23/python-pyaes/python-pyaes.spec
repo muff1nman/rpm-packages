@@ -8,7 +8,7 @@
 
 Name:		python-%{srcname}
 Version:	1.6.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:	Pure-Python implementation of AES block-cipher and common modes of operation
 Group:          Development/Languages
 License:	MIT
@@ -84,6 +84,9 @@ modes of operation (CBC, CFB, CTR, ECB and OFB).
 
 
 %changelog
+* Mon Jun 26 2017 Andrew DeMaria <lostonamountain@gmail.com> 1.6.0-3
+- Dont build python3 package for centos (lostonamountain@gmail.com)
+
 * Sun May 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 1.6.0-2
 - Made python2 main package (lostonamountain@gmail.com)
 - Fix python version for f23 (lostonamountain@gmail.com)
