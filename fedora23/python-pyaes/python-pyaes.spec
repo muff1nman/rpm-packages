@@ -26,6 +26,7 @@ BuildRequires:  python2-devel
 A pure-Python implementation of the AES block cipher algorithm and the common
 modes of operation (CBC, CFB, CTR, ECB and OFB).
 
+%if 0%{!?el7:1}
 %package -n python3-%{srcname}
 Summary:	%{summary}
 BuildRequires:  python3-crypto
@@ -36,7 +37,7 @@ BuildRequires:  python3-devel
 %description -n python3-%{srcname}
 A pure-Python implementation of the AES block cipher algorithm and the common
 modes of operation (CBC, CFB, CTR, ECB and OFB).
-
+%endif
 
 %prep
 %autosetup -p1 -n %{srcname}-%{version}
@@ -44,12 +45,16 @@ modes of operation (CBC, CFB, CTR, ECB and OFB).
 
 %build
 %py2_build
+%if 0%{!?el7:1}
 %py3_build
+%endif
 
 
 %install
 %py2_install
+%if 0%{!?el7:1}
 %py3_install
+%endif
 
 
 %check
@@ -57,9 +62,11 @@ modes of operation (CBC, CFB, CTR, ECB and OFB).
 %{__python2} tests/test-blockfeeder.py
 %{__python2} tests/test-util.py
 
+%if 0%{!?el7:1}
 %{__python3} tests/test-aes.py
 %{__python3} tests/test-blockfeeder.py
 %{__python3} tests/test-util.py
+%endif
 
 
 %files -n python%{python2_pkgversion}-%{srcname}
@@ -68,10 +75,12 @@ modes of operation (CBC, CFB, CTR, ECB and OFB).
 %{python2_sitelib}/*
 
 
+%if 0%{!?el7:1}
 %files -n python3-%{srcname}
 %license LICENSE.txt
 %doc README.md
 %{python3_sitelib}/*
+%endif
 
 
 %changelog
