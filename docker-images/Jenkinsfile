@@ -1,0 +1,4 @@
+node {
+  checkout scm
+  sh "docker build -t rpmbuilder/fedora26 docker-images/fedora26"
+}
