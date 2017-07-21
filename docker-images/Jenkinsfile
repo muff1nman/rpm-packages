@@ -1,4 +1,7 @@
 node {
+  stage 'Checkout Source'
   checkout scm
+
+  stage 'Docker Build'
   sh "docker build -t rpmbuilder/fedora26 docker-images/fedora26"
 }
