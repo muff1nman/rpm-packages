@@ -11,6 +11,7 @@ RUN dnf -y update && \
             passwd \
             java-1.8.0-openjdk-headless \
             gnupg2 \
+            sudo \
             tito && \
     dnf clean all
 
