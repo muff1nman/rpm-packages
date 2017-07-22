@@ -7,10 +7,11 @@ EXPOSE 22
 
 RUN dnf -y update && \
     dnf -y install \
-	openssh-server \
-	passwd \
-	java-1.8.0-openjdk-headless \
-	tito && \
+            openssh-server \
+            passwd \
+            java-1.8.0-openjdk-headless \
+            gnupg2 \
+            tito && \
     dnf clean all
 
 COPY entrypoint.sh /entrypoint.sh
