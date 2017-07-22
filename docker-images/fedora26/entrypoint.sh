@@ -24,7 +24,7 @@ __setup_gpg() {
     sudo -u $SSH_USERNAME bash << EOF
         cd
         echo "%_gpg_name Andrew DeMaria RPM Signing Key <rpmsign@andrewdemaria.com>" > .rpmmacros
-        cat << 2EF
+        gpg2 --import << EZF
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: GnuPG v2.0.22 (GNU/Linux)
 
@@ -85,7 +85,7 @@ qxalr3yYb+sfa3ByUWs81662t/5ppT7oaDnLJE98TZFUdYzsIMngYcU2N7co/9hZ
 oIN8SXAzrMo=
 =jJjJ
 -----END PGP PRIVATE KEY BLOCK-----
-2EF | gpg2 --import
+EZF
 
 echo '5D37D073B801D3C8F2B7F8D5F1FA01525717778A:6:' | gpg2 --import-ownertrust
         
