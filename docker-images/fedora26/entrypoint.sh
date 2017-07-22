@@ -24,6 +24,7 @@ __setup_gpg() {
     sudo -u $SSH_USERNAME bash << EOF
         cd
         echo "%_gpg_name Andrew DeMaria RPM Signing Key <rpmsign@andrewdemaria.com>" > .rpmmacros
+	export GPG_TTY=$(tty)
         gpg2 --import << EZF
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: GnuPG v2.0.22 (GNU/Linux)
