@@ -25,7 +25,7 @@ __setup_gpg() {
         cd
         echo "%_gpg_name Andrew DeMaria RPM Signing Key <rpmsign@andrewdemaria.com>" > .rpmmacros
 	export GPG_TTY=$(tty)
-        gpg2 --import << EZF
+        gpg2 --batch --import << EZF
 -----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: GnuPG v2.0.22 (GNU/Linux)
 
@@ -88,7 +88,7 @@ oIN8SXAzrMo=
 -----END PGP PRIVATE KEY BLOCK-----
 EZF
 
-echo '5D37D073B801D3C8F2B7F8D5F1FA01525717778A:6:' | gpg2 --import-ownertrust
+echo '5D37D073B801D3C8F2B7F8D5F1FA01525717778A:6:' | gpg2 --batch --import-ownertrust
         
 EOF
 }
