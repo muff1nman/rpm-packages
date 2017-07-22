@@ -1,6 +1,6 @@
 Name:           j4-dmenu-desktop
 Version:        2.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Generic menu for X
 License:        GPL
 URL:            https://github.com/enkore/j4-dmenu-desktop
@@ -33,3 +33,6 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 
 %changelog
+* Fri Jul 21 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.15-2
+- Added j4 dmenu build for F26 (lostonamountain@gmail.com)
+
