@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 : ${SSH_USERNAME:=user}
 : ${SSH_USERPASS:=$(dd if=/dev/urandom bs=1 count=15 | base64)}
 
