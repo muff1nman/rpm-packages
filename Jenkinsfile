@@ -3,5 +3,5 @@ node('docker && fedora26') {
     checkout scm
 
     stage 'Full Repo release'
-    sh "./build-repo ${repoName}"
+    sh "./build-repo.py ${repoName}"
 }
