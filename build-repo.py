@@ -53,7 +53,7 @@ def try_build(release_target, paths):
 	for path in paths:
 		logging.info("Building specs in %s" %(path))
 		with cd(path):
-			tito_cmd = "tito release %s %s" %(test, release_target)
+			tito_cmd = "tito release --arg nosign=true %s %s " %(test, release_target)
 			result = call(tito_cmd)
 			if result == 0:
 				good.add(path)
