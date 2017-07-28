@@ -8,7 +8,7 @@
 Summary:    X Keyboard Extension configuration data
 Name:       xkeyboard-config-hhk
 Version:    2.21
-Release:    1%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+Release:    2%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 License:    MIT
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
@@ -118,6 +118,9 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 %{_datadir}/pkgconfig/xkeyboard-config.pc
 
 %changelog
+* Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.21-2
+- Added xkeyboard config with hhk patch (lostonamountain@gmail.com)
+
 * Thu Jun 01 2017 Peter Hutterer <peter.hutterer@redhat.com> 2.21-1
 - xkeyboard-config 2.21
 
