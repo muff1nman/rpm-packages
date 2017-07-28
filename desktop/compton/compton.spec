@@ -2,7 +2,7 @@
 
 Name:           compton
 Version:        0.1
-Release:        1.20170728%{commit}%{?dist}
+Release:        1.20170729%{commit}%{?dist}
 Summary:        Compositor for X11
 
 License:        MIT
@@ -58,6 +58,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1-1.20170729316eac06
+- Updated to 316eac06 (lostonamountain@gmail.com)
+
 * Mon Jan 18 2016 Yaroslav Sapozhnyk <yaroslav.sapozhnik@gmail.com> - 0.1-1
 - Initial version of the Compton specfile
 
