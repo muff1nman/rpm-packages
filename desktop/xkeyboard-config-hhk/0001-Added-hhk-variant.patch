@@ -1,8 +1,19 @@
+From fa8904069608601b371c7ecaee124015ebf5ae55 Mon Sep 17 00:00:00 2001
+From: Andrew DeMaria <lostonamountain@gmail.com>
+Date: Sat, 29 Jul 2017 10:06:31 -0600
+Subject: [PATCH] Added hhk variant
+
+---
+ rules/base.xml.in  | 12 ++++++++++++
+ rules/evdev.xml.in | 12 ++++++++++++
+ symbols/us         | 15 +++++++++++++++
+ 3 files changed, 39 insertions(+)
+
 diff --git a/rules/base.xml.in b/rules/base.xml.in
-index 0b0c148..ffd8897 100644
+index ddd977c..9d696a0 100644
 --- a/rules/base.xml.in
 +++ b/rules/base.xml.in
-@@ -1387,6 +1387,18 @@
+@@ -1408,6 +1408,18 @@
          </variant>
          <variant>
            <configItem>
@@ -22,10 +33,10 @@ index 0b0c148..ffd8897 100644
              <!-- Keyboard indicator for Russian layouts -->
              <_shortDescription>ru</_shortDescription>
 diff --git a/rules/evdev.xml.in b/rules/evdev.xml.in
-index 0b0c148..4be6928 100644
+index ddd977c..cf3eb29 100644
 --- a/rules/evdev.xml.in
 +++ b/rules/evdev.xml.in
-@@ -1386,6 +1386,18 @@
+@@ -1407,6 +1407,18 @@
            </configItem>
          </variant>
          <variant>
@@ -45,10 +56,10 @@ index 0b0c148..4be6928 100644
              <name>rus</name>
              <!-- Keyboard indicator for Russian layouts -->
 diff --git a/symbols/us b/symbols/us
-index d5a6c18..4b5b8e4 100644
+index a4eec37..4959bfe 100644
 --- a/symbols/us
 +++ b/symbols/us
-@@ -1561,3 +1561,18 @@ partial alphanumeric_keys
+@@ -1787,3 +1787,18 @@ partial alphanumeric_keys
  	xkb_symbols "sun_type6" {
  	include "sun_vndr/us(sun_type6)"
  };
@@ -67,3 +78,6 @@ index d5a6c18..4b5b8e4 100644
 +       include "us(hhk_mac)"
 +       include "altwin(swap_alt_win)"
 +};
+-- 
+2.5.5
+
