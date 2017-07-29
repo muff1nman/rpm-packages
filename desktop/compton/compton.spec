@@ -58,6 +58,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sat Jul 29 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1-3.20170729316eac0
+- Change source name (lostonamountain@gmail.com)
+
 * Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1-1.20170729316eac0
 - Updated to 316eac0 (lostonamountain@gmail.com)
 
