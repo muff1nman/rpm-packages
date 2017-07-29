@@ -1,4 +1,4 @@
-%define commit 316eac06
+%define commit 316eac0
 
 Name:           compton
 Version:        0.1
@@ -58,8 +58,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
-* Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1-1.20170729316eac06
-- Updated to 316eac06 (lostonamountain@gmail.com)
+* Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1-1.20170729316eac0
+- Updated to 316eac0 (lostonamountain@gmail.com)
 
 * Mon Jan 18 2016 Yaroslav Sapozhnyk <yaroslav.sapozhnik@gmail.com> - 0.1-1
 - Initial version of the Compton specfile
