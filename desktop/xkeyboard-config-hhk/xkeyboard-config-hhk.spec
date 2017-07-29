@@ -23,7 +23,7 @@ Source0:    http://xorg.freedesktop.org/archive/individual/data/%{origname}/%{or
 Conflicts:  xkeyboard-config
 Provides:   xkeyboard-config
 
-Patch0:     hhk.patch
+Patch0:     0001-Added-hhk-variant.patch
 
 # Submitted upstream
 Patch1:     0001-Add-evdev-mappings-for-KEY_SOUND-KEY_UWB-KEY_WWAN-an.patch 
