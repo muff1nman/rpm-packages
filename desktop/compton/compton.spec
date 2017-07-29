@@ -2,7 +2,7 @@
 
 Name:           compton
 Version:        0.1
-Release:        2.20170729%{commit}%{?dist}
+Release:        3.20170729%{commit}%{?dist}
 Summary:        Compositor for X11
 
 License:        MIT
@@ -12,7 +12,7 @@ URL:            https://github.com/chjj/%{name}
 # following command to generate the tarball:
 # wget -O chjj-compton-%{commit}.tar.gz --no-check-certificate --content-disposition http://github.com/chjj/compton/tarball/%{commit}
 
-Source0:        %{name}-%{commit}.tar.gz
+Source0:        chjj-%{name}-%{commit}.tar.gz
 
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xcomposite)
