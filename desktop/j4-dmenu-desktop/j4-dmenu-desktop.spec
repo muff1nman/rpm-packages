@@ -1,6 +1,6 @@
 Name:           j4-dmenu-desktop
 Version:        2.16
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Generic menu for X
 License:        GPL
 URL:            https://github.com/enkore/j4-dmenu-desktop
@@ -33,3 +33,7 @@ make %{?_smp_mflags}
 %{_bindir}/%{name}
 
 %changelog
+* Sat Jul 07 2018 Andrew DeMaria <lostonamountain@gmail.com> 2.16-2
+- Update j4 dmenu (lostonamountain@gmail.com)
+- Removed symlink (lostonamountain@gmail.com)
+
