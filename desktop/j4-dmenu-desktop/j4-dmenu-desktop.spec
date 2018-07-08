@@ -1,5 +1,5 @@
 Name:           j4-dmenu-desktop
-Version:        2.15
+Version:        2.16
 Release:        1%{?dist}
 Summary:        Generic menu for X
 License:        GPL
