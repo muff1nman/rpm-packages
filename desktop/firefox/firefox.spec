@@ -103,7 +103,7 @@
 Summary:        Mozilla Firefox Web browser
 Name:           firefox
 Version:        61.0.2
-Release:        8%{?pre_tag}%{?dist}
+Release:        9%{?pre_tag}%{?dist}
 URL:            https://www.mozilla.org/firefox/
 License:        MPLv1.1 or GPLv2+ or LGPLv2+
 Source0:        https://archive.mozilla.org/pub/firefox/releases/%{version}/source/firefox-%{version}.source.tar.xz
@@ -940,6 +940,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 #---------------------------------------------------------------------
 
 %changelog
+* Wed Sep 05 2018 Andrew DeMaria <lostonamountain@gmail.com> 61.0.2-9
+- Change to p2 (lostonamountain@gmail.com)
+
 * Wed Sep 05 2018 Andrew DeMaria <lostonamountain@gmail.com> 61.0.2-8
 - Move patch up (lostonamountain@gmail.com)
 
