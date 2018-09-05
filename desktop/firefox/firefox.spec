@@ -91,7 +91,7 @@
 %global tarballdir    firefox-%{version}
 
 %global official_branding       1
-%global build_langpacks         1
+%global build_langpacks         0
 
 %global enable_mozilla_crashreporter       0
 %if !%{debug_build}
