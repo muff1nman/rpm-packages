@@ -103,7 +103,7 @@
 Summary:        Mozilla Firefox Web browser
 Name:           firefox
 Version:        61.0.2
-Release:        6%{?pre_tag}%{?dist}
+Release:        7%{?pre_tag}%{?dist}
 URL:            https://www.mozilla.org/firefox/
 License:        MPLv1.1 or GPLv2+ or LGPLv2+
 Source0:        https://archive.mozilla.org/pub/firefox/releases/%{version}/source/firefox-%{version}.source.tar.xz
@@ -941,6 +941,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 #---------------------------------------------------------------------
 
 %changelog
+* Wed Sep 05 2018 Andrew DeMaria <lostonamountain@gmail.com> 61.0.2-7
+- Fix link to source again (lostonamountain@gmail.com)
+
 * Tue Sep 04 2018 Andrew DeMaria <lostonamountain@gmail.com> 61.0.2-6
 - Disable langpacks (lostonamountain@gmail.com)
 
