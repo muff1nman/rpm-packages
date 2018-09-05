@@ -194,6 +194,9 @@ Patch573:        rb255772.patch
 # Debian patches
 Patch500:        mozilla-440908.patch
 
+# DeMaria patches
+Patch940:       demaria-control-w.patch
+
 %if %{?system_nss}
 BuildRequires:  pkgconfig(nspr) >= %{nspr_version}
 BuildRequires:  pkgconfig(nss) >= %{nss_version}
@@ -408,6 +411,8 @@ This package contains results of tests executed during build.
 %patch572 -p1 -b .mozilla-1467128
 %patch573 -p1 -b .rb255772
 %endif
+
+%patch940 -p1 -b .demaria
 
 %{__rm} -f .mozconfig
 %{__cp} %{SOURCE10} .mozconfig

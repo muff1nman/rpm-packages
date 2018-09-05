@@ -1,0 +1,15 @@
+diff --git a/firefox-61.0.2/browser/base/content/browser-sets.inc b/firefox-61.0.2/browser/base/content/browser-sets.inc
+index d2eaca5..a76e986 100644
+--- a/firefox-61.0.2/browser/base/content/browser-sets.inc
++++ b/firefox-61.0.2/browser/base/content/browser-sets.inc
+@@ -236,8 +236,8 @@
+     <key id="openFileKb" key="&openFileCmd.commandkey;" command="Browser:OpenFile"  modifiers="accel"/>
+     <key id="key_savePage" key="&savePageCmd.commandkey;" command="Browser:SavePage" modifiers="accel"/>
+     <key id="printKb" key="&printCmd.commandkey;" command="cmd_print"  modifiers="accel"/>
+-    <key id="key_close" key="&closeCmd.key;" command="cmd_close" modifiers="accel" reserved="true"/>
+-    <key id="key_closeWindow" key="&closeCmd.key;" command="cmd_closeWindow" modifiers="accel,shift" reserved="true"/>
++    <key id="key_close" key="&closeCmd.key;" command="cmd_close" modifiers="accel"/>
++    <key id="key_closeWindow" key="&closeCmd.key;" command="cmd_closeWindow" modifiers="accel,shift"/>
+     <key id="key_toggleMute" key="&toggleMuteCmd.key;" command="cmd_toggleMute" modifiers="control"/>
+     <key id="key_undo"
+          key="&undoCmd.key;"
