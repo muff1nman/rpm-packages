@@ -343,7 +343,7 @@ This package contains results of tests executed during build.
 # there is a compare of config and js/config directories and .orig suffix is
 # ignored during this compare.
 
-%patch940 -p1 -b .demaria
+%patch940 -p2 -b .demaria
 
 %ifarch s390
 %patch25 -p1 -b .rhbz-1219542-s390
