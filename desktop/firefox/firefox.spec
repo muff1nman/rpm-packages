@@ -103,7 +103,7 @@
 Summary:        Mozilla Firefox Web browser
 Name:           firefox
 Version:        61.0.2
-Release:        3%{?pre_tag}%{?dist}
+Release:        4%{?pre_tag}%{?dist}
 URL:            https://www.mozilla.org/firefox/
 License:        MPLv1.1 or GPLv2+ or LGPLv2+
 Source0:        https://hg.mozilla.org/releases/mozilla-release/archive/firefox-%{version}%{?pre_version}.source.tar.xz
@@ -941,6 +941,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 #---------------------------------------------------------------------
 
 %changelog
+* Tue Sep 04 2018 Andrew DeMaria <lostonamountain@gmail.com> 61.0.2-4
+- Removed Control-W keybinding
+
 * Wed Aug 15 2018 Ondrej Zoder <ozoder@redhat.com> - 61.0.2-3
 - Added patches for mozbz#1427700 and mozbz#1463809
 
