@@ -106,7 +106,7 @@ Version:        61.0.2
 Release:        6%{?pre_tag}%{?dist}
 URL:            https://www.mozilla.org/firefox/
 License:        MPLv1.1 or GPLv2+ or LGPLv2+
-Source0:        https://hg.mozilla.org/releases/mozilla-release/archive/FIREFOX_61_0_2_RELEASE.tar.gz
+Source0:        https://archive.mozilla.org/pub/firefox/releases/%{version}/source/firefox-%{version}.source.tar.xz
 %if %{build_langpacks}
 Source1:        firefox-langpacks-%{version}%{?pre_version}-20180809.tar.xz
 %endif
