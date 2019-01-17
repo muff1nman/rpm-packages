@@ -1,4 +1,4 @@
-%global version 1.4.18
+%global version 2.0.1
 %global git_tag v%{version}
 
 # Enable with systemctl "enable sanoid.timer"
