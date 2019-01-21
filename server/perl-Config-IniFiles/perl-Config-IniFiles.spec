@@ -1,6 +1,6 @@
 Name:           perl-Config-IniFiles
 Version:        2.79
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A module for reading .ini-style configuration files
 Group:          Development/Libraries
 License:        GPL+ or Artistic
@@ -45,6 +45,9 @@ make test
 %{_mandir}/man3/*.3pm*
 
 %changelog
+* Sun Jan 20 2019 Andrew DeMaria <lostonamountain@gmail.com> 2.79-2
+- new package built with tito
+
 * Tue May  7 2013 Tom Callaway <spot@fedoraproject.org> - 2.79-1
 - update to 2.79
 
