@@ -59,6 +59,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-4.20170729316eac0
+- Add requires git (lostonamountain@gmail.com)
+
 * Sat Jul 29 2017 Andrew DeMaria <lostonamountain@gmail.com> 0.1-3.20170729316eac0
 - Change source name (lostonamountain@gmail.com)
 
