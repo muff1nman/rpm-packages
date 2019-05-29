@@ -29,6 +29,7 @@ BuildRequires: pkgconfig(libdrm)
 BuildRequires: pkgconfig(gl)
 BuildRequires: pkgconfig(dbus-1)
 BuildRequires: asciidoc
+BuildRequires: git
 
 BuildRequires: desktop-file-utils
 
