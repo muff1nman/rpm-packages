@@ -10,6 +10,7 @@ Source0:	https://github.com/muff1nman/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXft-devel
+BuildRequires:  gcc
 Requires:       libXft
 Requires:       terminus-fonts
 
