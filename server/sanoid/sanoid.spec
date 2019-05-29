@@ -111,6 +111,9 @@ echo "* * * * * root %{_sbindir}/sanoid --cron" > %{buildroot}%{_docdir}/%{name}
 %endif
 
 %changelog
+* Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 2.0.1-3
+- Update with upstream (lostonamountain@gmail.com)
+
 * Wed Jan 16 2019 Andrew DeMaria <lostonamountain@gmail.com> 2.0.1-2
 - Update sanoid to 2.0.1 (lostonamountain@gmail.com)
 * Sat Apr 28 2018 Dominic Robinson <github@dcrdev.com> - 1.4.18-1
