@@ -30,6 +30,7 @@ BuildRequires: pkgconfig(gl)
 BuildRequires: pkgconfig(dbus-1)
 BuildRequires: asciidoc
 BuildRequires: git
+BuildRequires: gcc
 
 BuildRequires: desktop-file-utils
 
