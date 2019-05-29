@@ -2,7 +2,7 @@
 
 Name:           compton
 Version:        0.1
-Release:        4.20170729%{commit}%{?dist}
+Release:        5.20170729%{commit}%{?dist}
 Summary:        Compositor for X11
 
 License:        MIT
