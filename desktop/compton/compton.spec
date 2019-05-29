@@ -60,6 +60,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-5.20170729316eac0
+- Bump release (lostonamountain@gmail.com)
+- Add gcc dependency (lostonamountain@gmail.com)
+
 * Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-4.20170729316eac0
 - Add requires git (lostonamountain@gmail.com)
 
