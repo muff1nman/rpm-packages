@@ -9,6 +9,8 @@ BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  git
 BuildRequires:  cmake
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 Requires:       terminus-fonts dmenu
 # dmenu-4.5 switched to a more generic tool, stest (f17 note)
 Obsoletes:      lsx < 0.1-2
