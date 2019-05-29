@@ -2,7 +2,7 @@
 
 Name:           compton
 Version:        0.1
-Release:        5.20170729%{commit}%{?dist}
+Release:        6.20170729%{commit}%{?dist}
 Summary:        Compositor for X11
 
 License:        MIT
@@ -60,6 +60,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-6.20170729316eac0
+- Bump Version
 * Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-5.20170729316eac0
 - Bump release (lostonamountain@gmail.com)
 - Add gcc dependency (lostonamountain@gmail.com)
