@@ -6,15 +6,15 @@
 
 Name:		   sanoid
 Version:	   %{version}
-Release:	   2%{?dist}
+Release:	   3%{?dist}
 BuildArch:	   noarch
 Summary:	   A policy-driven snapshot management tool for ZFS file systems
 Group:		   Applications/System
 License:	   GPLv3
 URL:		   https://github.com/jimsalterjrs/sanoid
-Source0:           https://github.com/jimsalterjrs/%{name}/archive/%{git_tag}/%{name}-%{version}.tar.gz
+Source0:	   https://github.com/jimsalterjrs/%{name}/archive/%{git_tag}/%{name}-%{version}.tar.gz
 
-Requires:	   perl, mbuffer, lzop, pv
+Requires:	   perl, mbuffer, lzop, pv, perl-Config-IniFiles, perl-capture-tiny
 %if 0%{?_with_systemd}
 Requires:      systemd >= 212
 
@@ -58,6 +58,7 @@ Requires=zfs.target
 After=zfs.target
 
 [Service]
+Environment=TZ=UTC
 Type=oneshot
 ExecStart=%{_sbindir}/sanoid --cron
 EOF
