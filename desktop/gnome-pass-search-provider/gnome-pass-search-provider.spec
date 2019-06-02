@@ -16,6 +16,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 A Gnome Shell search provider for zx2c4/pass (passwordstore.org) that sends passwords to clipboard (or GPaste).
 
+%define debug_package %{nil}
+
 %prep
 %setup -q -n %{name}-%{version}
 
