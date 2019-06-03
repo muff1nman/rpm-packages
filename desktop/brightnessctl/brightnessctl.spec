@@ -29,7 +29,7 @@ export MODE="4755"
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_udevrulesdir}/90-brightnessctl.rules
+%_udevrulesdir/90-brightnessctl.rules
 %{_mandir}/man1/brightnessctl.1.gz
 
 %changelog
