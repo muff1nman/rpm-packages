@@ -31,6 +31,9 @@ export MODE="4755"
 %{_bindir}/%{name}
 
 %changelog
+* Sun Jun 02 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.4-0
+- Bump to version 0.4
+
 * Thu Jul 12 2018 Fedora Release Engineering <releng@fedoraproject.org> - 0.3-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
