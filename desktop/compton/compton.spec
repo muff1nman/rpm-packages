@@ -1,4 +1,5 @@
 %define commit 316eac0
+%define debug_package %{nil}
 
 Name:           compton
 Version:        0.1
