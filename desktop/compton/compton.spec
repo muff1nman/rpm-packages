@@ -61,6 +61,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Sun Jun 02 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-7.20170729316eac0
+- Disable debug packages (lostonamountain@gmail.com)
+
 * Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-6.20170729316eac0
 - Bump Version
 * Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.1-5.20170729316eac0
