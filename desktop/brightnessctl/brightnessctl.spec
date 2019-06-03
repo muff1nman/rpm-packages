@@ -25,13 +25,13 @@ export MODE="4755"
 %make_build
 
 %install
-%make_install DESTDIR=%{buildroot}
+%make_install DESTDIR=%{buildroot} UDEVDIR=%{_udevrulesdir}
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%_udevrulesdir/90-brightnessctl.rules
+%{_udevrulesdir}/90-brightnessctl.rules
 %{_mandir}/man1/brightnessctl.1.gz
 
 %changelog
