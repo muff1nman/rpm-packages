@@ -1,6 +1,6 @@
 Name:           brightnessctl
 Version:        0.4
-Release:        0%{?dist}
+Release:        1%{?dist}
 Summary:        Read and control device brightness
 
 License:        MIT
@@ -33,6 +33,9 @@ export MODE="4755"
 %{_mandir}/brightnessctl.1.gz
 
 %changelog
+* Sun Jun 02 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.4-1
+- add udev rules and mandir (lostonamountain@gmail.com)
+
 * Sun Jun 02 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.4-0
 - Bump to version 0.4
 
