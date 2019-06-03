@@ -30,7 +30,7 @@ export MODE="4755"
 %license LICENSE
 %{_bindir}/%{name}
 %{_udevrulesdir}/90-brightnessctl.rules
-%{_mandir}/brightnessctl.1.gz
+%{_mandir}/man1/brightnessctl.1.gz
 
 %changelog
 * Sun Jun 02 2019 Andrew DeMaria <lostonamountain@gmail.com> 0.4-1
