@@ -9,6 +9,8 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  make
+# For the %%_udevrulesdir macro
+BuildRequires:  systemd
 
 %description
 Utility to read and control the display brightness.
