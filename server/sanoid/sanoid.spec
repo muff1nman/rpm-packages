@@ -6,7 +6,7 @@
 
 Name:		   sanoid
 Version:	   %{version}
-Release:	   3%{?dist}
+Release:	   4%{?dist}
 BuildArch:	   noarch
 Summary:	   A policy-driven snapshot management tool for ZFS file systems
 Group:		   Applications/System
@@ -111,6 +111,9 @@ echo "* * * * * root %{_sbindir}/sanoid --cron" > %{buildroot}%{_docdir}/%{name}
 %endif
 
 %changelog
+* Tue Jul 09 2019 Andrew DeMaria <lostonamountain@gmail.com> 2.0.1-4
+- Fix casing for package name (lostonamountain@gmail.com)
+
 * Wed May 29 2019 Andrew DeMaria <lostonamountain@gmail.com> 2.0.1-3
 - Update with upstream (lostonamountain@gmail.com)
 
