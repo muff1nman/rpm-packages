@@ -1,5 +1,6 @@
 # INFO: Package contains data-only, no binaries, so no debuginfo is needed
 %global debug_package %{nil}
+%define origname xkeyboard-config
 
 #global gitdate 20110415
 #global gitversion 19a0026b5
@@ -7,16 +8,16 @@
 Summary:    X Keyboard Extension configuration data
 Name:       xkeyboard-config-hhk
 Version:    2.29
-Release:    1%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+Release:    2%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 License:    MIT
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
 %if 0%{?gitdate}
-Source0:    %{name}-%{gitdate}.tar.bz2
+Source0:    %{origname}-%{gitdate}.tar.bz2
 Source1:    make-git-snapshot.sh
 Source2:    commitid
 %else
-Source0:    http://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.bz2
+Source0:    http://xorg.freedesktop.org/archive/individual/data/%{origname}/%{origname}-%{version}.tar.bz2
 %endif
 
 Conflicts:  xkeyboard-config
@@ -70,7 +71,7 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
-%find_lang %{name} 
+%find_lang %{origname} 
 
 # Create filelist
 {
@@ -81,7 +82,7 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
    popd
 }
 
-%files -f files.list -f %{name}.lang
+%files -f files.list -f %{origname}.lang
 %doc AUTHORS README NEWS TODO COPYING docs/README.* docs/HOWTO.*
 %{_datadir}/X11/xkb/rules/xorg
 %{_datadir}/X11/xkb/rules/xorg.lst
