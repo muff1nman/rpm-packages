@@ -5,7 +5,7 @@
 #global gitversion 19a0026b5
 
 Summary:    X Keyboard Extension configuration data
-Name:       xkeyboard-config
+Name:       xkeyboard-config-hhk
 Version:    2.29
 Release:    1%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 License:    MIT
