@@ -1,23 +1,22 @@
 # INFO: Package contains data-only, no binaries, so no debuginfo is needed
 %global debug_package %{nil}
-%define origname xkeyboard-config
 
 #global gitdate 20110415
 #global gitversion 19a0026b5
 
 Summary:    X Keyboard Extension configuration data
-Name:       xkeyboard-config-hhk
-Version:    2.21
-Release:    4%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+Name:       xkeyboard-config
+Version:    2.29
+Release:    1%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 License:    MIT
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
 %if 0%{?gitdate}
-Source0:    %{origname}-%{gitdate}.tar.bz2
+Source0:    %{name}-%{gitdate}.tar.bz2
 Source1:    make-git-snapshot.sh
 Source2:    commitid
 %else
-Source0:    http://xorg.freedesktop.org/archive/individual/data/%{origname}/%{origname}-%{version}.tar.bz2
+Source0:    http://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.bz2
 %endif
 
 Conflicts:  xkeyboard-config
@@ -25,13 +24,9 @@ Provides:   xkeyboard-config
 
 Patch0:     0001-Added-hhk-variant.patch
 
-# Submitted upstream
-Patch1:     0001-Add-evdev-mappings-for-KEY_SOUND-KEY_UWB-KEY_WWAN-an.patch 
+BuildArch:  noarch
 
-BuildArch: noarch
-
-BuildRequires:  gettext
-BuildRequires:  intltool
+BuildRequires:  gettext gettext-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  perl(XML::Parser)
@@ -47,9 +42,8 @@ BuildRequires:  git-core
 %endif
 
 %description
-This package contains configuration data used by the X Keyboard Extension 
-(XKB), which allows selection of keyboard layouts when using a graphical 
-interface. 
+This package contains configuration data used by the X Keyboard Extension (XKB),
+which allows selection of keyboard layouts when using a graphical interface.
 
 %package devel
 Summary:    Development files for %{name}
@@ -60,30 +54,10 @@ Requires:   pkgconfig
 Development files for %{name}.
 
 %prep
-%setup -q -n %{origname}-%{?gitdate:%{gitdate}}%{!?gitdate:%{version}}
-
-%if 0%{?gitdate}
-git checkout -b fedora
-sed -i 's/git/&+ssh/' .git/config
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "x@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
-fi
-git commit -am "%{name} %{version}"
-%else
-git init
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "x@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
-fi
-git add .
-git commit -a -q -m "%{name} %{version} baseline."
-%endif
-
-git am -p1 %{patches} < /dev/null
+%autosetup -S git
 
 %build
-AUTOPOINT="intltoolize --automake --copy" autoreconf -v --force --install || exit 1
+autoreconf -v --force --install || exit 1
 %configure \
     --enable-compat-rules \
     --with-xkb-base=%{_datadir}/X11/xkb \
@@ -96,7 +70,7 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
-%find_lang %{origname} 
+%find_lang %{name} 
 
 # Create filelist
 {
@@ -107,7 +81,7 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
    popd
 }
 
-%files -f files.list -f %{origname}.lang
+%files -f files.list -f %{name}.lang
 %doc AUTHORS README NEWS TODO COPYING docs/README.* docs/HOWTO.*
 %{_datadir}/X11/xkb/rules/xorg
 %{_datadir}/X11/xkb/rules/xorg.lst
@@ -118,14 +92,61 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 %{_datadir}/pkgconfig/xkeyboard-config.pc
 
 %changelog
-* Sat Jul 29 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.21-4
-- Fixed patch name in spec file (lostonamountain@gmail.com)
-
-* Sat Jul 29 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.21-3
-- Use git patch format (lostonamountain@gmail.com)
-
-* Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.21-2
+* Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.29-2
 - Added xkeyboard config with hhk patch (lostonamountain@gmail.com)
+
+* Fri Jan 31 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.29-1
+- xkeyboard-config 2.29
+
+* Fri Oct 25 2019 Peter Hutterer <peter.hutterer@redhat.com> 2.28-1
+- xkeyboard-config 2.28
+
+* Sat Jul 27 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.27-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
+* Thu Jun 13 2019 Peter Hutterer <peter.hutterer@redhat.com> 2.27-1
+- xkeyboard-config 2.27
+- drop intltool, no longer needed, see upstream commit e8026f673e
+
+* Mon May 27 2019 Peter Hutterer <peter.hutterer@redhat.com> 2.26-2
+- xkeyboard-config 2.26, with sources this time
+
+* Mon May 27 2019 Peter Hutterer <peter.hutterer@redhat.com> 2.26-1
+- xkeyboard-config 2.26
+
+* Sun Feb 03 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.24-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
+* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.24-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
+* Fri Jul 06 2018 Peter Hutterer <peter.hutterer@redhat.com> 2.24-3
+- Remove high-keycode removal patches, xkbcomp 1.4.2 has been in stable for
+  long enough (related #1587998)
+
+* Thu Jun 07 2018 Peter Hutterer <peter.hutterer@redhat.com> 2.24-2
+- Revert two high keycode mappings, xkbcomp fails to parse those.
+  (#1587998)
+
+* Tue Jun 05 2018 Peter Hutterer <peter.hutterer@redhat.com> 2.24-1
+- xkeyboard-config 2.24
+
+* Wed Feb 07 2018 Peter Hutterer <peter.hutterer@redhat.com> 2.23.1-1
+- Fix typo in polish keyboard layout
+- xkeyboard-config 2.23.1
+- use autosetup
+
+* Wed Jan 31 2018 Peter Hutterer <peter.hutterer@redhat.com> 2.23-1
+- xkeyboard-config 2.23
+
+* Fri Oct 06 2017 Peter Hutterer <peter.hutterer@redhat.com> 2.22-1
+- xkeyboard-config 2.22
+
+* Tue Sep 05 2017 Peter Hutterer <peter.hutterer@redhat.com> 2.21-3
+- Fix typo in tel-salara (#1469407)
+
+* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 2.21-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
 * Thu Jun 01 2017 Peter Hutterer <peter.hutterer@redhat.com> 2.21-1
 - xkeyboard-config 2.21
