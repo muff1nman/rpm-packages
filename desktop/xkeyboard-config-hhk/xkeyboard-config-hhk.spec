@@ -8,7 +8,7 @@
 Summary:    X Keyboard Extension configuration data
 Name:       xkeyboard-config-hhk
 Version:    2.29
-Release:    2%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+Release:    3%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 License:    MIT
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
