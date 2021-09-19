@@ -1,6 +1,6 @@
-From e16b39124d4827023f47969fd272156586c90719 Mon Sep 17 00:00:00 2001
+From f7476bf68fbe446759b224c72888e35e60507304 Mon Sep 17 00:00:00 2001
 From: Andrew DeMaria <lostonamountain@gmail.com>
-Date: Thu, 2 Jul 2020 19:46:31 -0600
+Date: Sat, 18 Sep 2021 20:42:03 -0600
 Subject: [PATCH] Added hhk variant
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH] Added hhk variant
  3 files changed, 39 insertions(+)
 
 diff --git a/rules/base.xml b/rules/base.xml
-index 37a1763..6ec867a 100644
+index 62f4416..abecf2d 100644
 --- a/rules/base.xml
 +++ b/rules/base.xml
-@@ -1420,6 +1420,18 @@
+@@ -1442,6 +1442,18 @@
              <description>English (programmer Dvorak)</description>
            </configItem>
          </variant>
@@ -31,12 +31,12 @@ index 37a1763..6ec867a 100644
 +        </variant>
          <variant>
            <configItem>
-             <name>rus</name>
+             <name>symbolic</name>
 diff --git a/rules/evdev.xml b/rules/evdev.xml
-index 37a1763..6ec867a 100644
+index 62f4416..abecf2d 100644
 --- a/rules/evdev.xml
 +++ b/rules/evdev.xml
-@@ -1420,6 +1420,18 @@
+@@ -1442,6 +1442,18 @@
              <description>English (programmer Dvorak)</description>
            </configItem>
          </variant>
@@ -54,12 +54,12 @@ index 37a1763..6ec867a 100644
 +        </variant>
          <variant>
            <configItem>
-             <name>rus</name>
+             <name>symbolic</name>
 diff --git a/symbols/us b/symbols/us
-index 798926f..d5e87cb 100644
+index 7ea62f5..980f982 100644
 --- a/symbols/us
 +++ b/symbols/us
-@@ -1761,6 +1761,21 @@ partial alphanumeric_keys
+@@ -1940,6 +1940,21 @@ partial alphanumeric_keys
  	include "sun_vndr/us(sun_type6)"
  };
  
@@ -82,5 +82,5 @@ index 798926f..d5e87cb 100644
  // See https://github.com/jackrosenthal/threelayout for specification
  partial alphanumeric_keys modifier_keys
 -- 
-2.25.4
+2.26.3
 
