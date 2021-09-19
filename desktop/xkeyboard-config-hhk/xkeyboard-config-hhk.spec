@@ -7,8 +7,8 @@
 
 Summary:    X Keyboard Extension configuration data
 Name:       xkeyboard-config-hhk
-Version:    2.29
-Release:    4%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
+Version:    2.33
+Release:    2%{?gitdate:.%{gitdate}git%{gitversion}}%{?dist}
 License:    MIT
 URL:        http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
@@ -28,7 +28,7 @@ Patch0:     0001-Added-hhk-variant.patch
 BuildArch:  noarch
 
 BuildRequires:  gettext gettext-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  libxslt
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -36,11 +36,7 @@ BuildRequires:  pkgconfig(x11) >= 1.4.3
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
 BuildRequires:  pkgconfig(xproto) >= 7.0.20
 BuildRequires:  xkbcomp
-BuildRequires:  git
-
-%if 0%{?gitdate}
 BuildRequires:  git-core
-%endif
 
 %description
 This package contains configuration data used by the X Keyboard Extension (XKB),
@@ -55,39 +51,14 @@ Requires:   pkgconfig
 Development files for %{name}.
 
 %prep
-%setup -q -n %{origname}-%{?gitdate:%{gitdate}}%{!?gitdate:%{version}}
-
-%if 0%{?gitdate}
-git checkout -b fedora
-sed -i 's/git/&+ssh/' .git/config
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "x@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
-fi
-git commit -am "%{name} %{version}"
-%else
-git init
-if [ -z "$GIT_COMMITTER_NAME" ]; then
-    git config user.email "x@fedoraproject.org"
-    git config user.name "Fedora X Ninjas"
-fi
-git add .
-git commit -a -q -m "%{name} %{version} baseline."
-%endif
-
-git am -p1 %{patches} < /dev/null
+%autosetup -S git
 
 %build
-autoreconf -v --force --install || exit 1
-%configure \
-    --enable-compat-rules \
-    --with-xkb-base=%{_datadir}/X11/xkb \
-    --with-xkb-rules-symlink=xorg
-
-make %{?_smp_mflags}
+%meson -Dcompat-rules=true -Dxorg-rules-symlinks=true
+%meson_build
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+%meson_install
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
@@ -103,16 +74,56 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 }
 
 %files -f files.list -f %{origname}.lang
-%doc AUTHORS README NEWS TODO COPYING docs/README.* docs/HOWTO.*
+%doc AUTHORS README NEWS COPYING docs/README.* docs/HOWTO.*
+%{_mandir}/man7/xkeyboard-config.*
 %{_datadir}/X11/xkb/rules/xorg
 %{_datadir}/X11/xkb/rules/xorg.lst
 %{_datadir}/X11/xkb/rules/xorg.xml
-%{_mandir}/man7/xkeyboard-config.*
 
 %files devel
 %{_datadir}/pkgconfig/xkeyboard-config.pc
 
 %changelog
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.33-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
+* Tue Jun 22 2021 Peter Hutterer <peter.hutterer@redhat.com> 2.33-3
+- xkeyboard-config 2.33
+
+* Tue Apr 20 2021 Peter Hutterer <peter.hutterer@redhat.com> 2.32-3
+- Restore the xorg ruleset, console-setup and possibly others are still
+  using those (#1951459)
+
+* Fri Apr 09 2021 Peter Hutterer <peter.hutterer@redhat.com> 2.32-2
+- Allow for a "custom" layout
+
+* Tue Feb 16 2021 Peter Hutterer <peter.hutterer@redhat.com> 2.32-1
+- xkeyboard-config 2.32
+- build with meson now
+- drop the xorg ruleset, no longer in use. Everything is hardcoded to evdev
+  these days.
+
+* Thu Jan 28 2021 Fedora Release Engineering <releng@fedoraproject.org> - 2.31-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Tue Dec 01 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.31-3
+- Add make to BuildRequires
+
+* Wed Nov 04 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.31-2
+- Fix BuildRequires for git, we only need git-core
+
+* Wed Oct 07 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.31-1
+- xkeyboard-config 2.31
+
+* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 2.30-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
+
+* Fri Jun 19 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.30-2
+- Fix a syntax error in the indian symbols file
+
+* Wed Jun 03 2020 Peter Hutterer <peter.hutterer@redhat.com> 2.30-1
+- xkeyboard-config 2.30
+
 * Fri Jul 28 2017 Andrew DeMaria <lostonamountain@gmail.com> 2.29-2
 - Added xkeyboard config with hhk patch (lostonamountain@gmail.com)
 
